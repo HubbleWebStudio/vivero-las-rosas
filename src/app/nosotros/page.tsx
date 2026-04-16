@@ -125,8 +125,8 @@ export default function NosotrosPage() {
               opacity: 0.85,
             }}
           >
-            "Una buena planta no se compra — se elige. Por eso en Las Rosas nos tomamos
-            el tiempo de conocerte antes de recomendarte."
+            &ldquo;Una buena planta no se compra — se elige. Por eso en Las Rosas nos tomamos
+            el tiempo de conocerte antes de recomendarte.&rdquo;
           </motion.blockquote>
         </div>
       </section>

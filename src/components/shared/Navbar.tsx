@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const links = [
   { label: 'Productos',   href: '/productos'  },
@@ -74,7 +75,7 @@ export default function Navbar() {
           </div>
 
           {/* Logo — centro */}
-          <a href="/" className="flex items-center justify-center">
+          <Link href="/" className="flex items-center justify-center">
             <Image
               src="/imagenes/home/logo.png"
               alt="Las Rosas Vivero & Paisajismo"
@@ -84,7 +85,7 @@ export default function Navbar() {
               style={{ height: '68px', width: 'auto' }}
               priority
             />
-          </a>
+          </Link>
 
           {/* Derecha — iconos + botón (desktop) / hamburger (mobile) */}
           <div className="flex items-center justify-end gap-2">
