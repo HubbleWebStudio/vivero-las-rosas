@@ -34,7 +34,7 @@ const containerVariants = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' as const } },
 }
 
 export default function Experiencia() {
@@ -42,7 +42,7 @@ export default function Experiencia() {
   const isInView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <section className="bg-bg-rest py-8">
+    <section className="bg-bg-rest py-section">
       <div className="container-hubble">
         {/* Card contenedor — verde olivo brand */}
         <motion.div
@@ -69,23 +69,23 @@ export default function Experiencia() {
                 >
                   {/* Ícono */}
                   <Icon
-                    size={16}
+                    size={22}
                     className="text-text-on-dark"
-                    style={{ opacity: 0.6 }}
+                    style={{ opacity: 0.7 }}
                   />
 
                   {/* Valor */}
                   <p
                     className="font-body font-bold text-text-on-dark"
-                    style={{ fontSize: '1.5rem', lineHeight: 1.1 }}
+                    style={{ fontSize: '2.25rem', lineHeight: 1.05 }}
                   >
                     {stat.valor}
                   </p>
 
                   {/* Label */}
                   <p
-                    className="text-label text-text-on-dark leading-snug"
-                    style={{ opacity: 0.65 }}
+                    className="text-small text-text-on-dark leading-snug"
+                    style={{ opacity: 0.8 }}
                   >
                     {stat.label}
                   </p>

@@ -41,14 +41,14 @@ export default function Hero() {
         className="absolute inset-0 flex flex-col justify-center container-hubble"
         style={{ paddingTop: '5rem' }}
       >
-        <div className="max-w-lg">
+        <div className="max-w-4xl">
           {/* Título */}
           <motion.h1
             initial={{ opacity: 0, y: 28 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease: 'easeOut' }}
             className="font-body font-bold text-white"
-            style={{ fontSize: 'clamp(2rem, 3.6vw, 3.25rem)', lineHeight: 1.12 }}
+            style={{ fontSize: 'clamp(2.5rem, 4.5vw, 4rem)', lineHeight: 1.1 }}
           >
             Vivero Las Rosas.
             <br />
@@ -62,7 +62,8 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
-            className="mt-5 text-small text-white/80 leading-relaxed max-w-xs"
+            className="mt-5 text-white/85 leading-relaxed max-w-md"
+            style={{ fontSize: '1.05rem' }}
           >
             {/* TODO: Reemplazar con contenido real */}
             Venta de plantas de interior y exterior. Servicio integral de diseño,
@@ -77,28 +78,23 @@ export default function Hero() {
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
             className="mt-8 flex flex-wrap items-center gap-3"
           >
-            {/* Botón 1 — fondo oscuro semitransparente + blur */}
+            {/* Botón 1 — blanco con texto oliva */}
             <motion.a
               href="#categorias"
               whileHover={{ y: -2, transition: { duration: 0.2 } }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-badge text-small font-medium text-white transition-all"
-              style={{
-                background: 'rgba(0,0,0,0.38)',
-                backdropFilter: 'blur(8px)',
-                border: '1px solid rgba(255,255,255,0.15)',
-              }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-badge text-small font-semibold bg-white text-brand-primary hover:bg-white/90 transition-all shadow-sm"
             >
               Ver catálogo
               <ArrowRight size={14} />
             </motion.a>
 
-            {/* Botón 2 — outlined blanco */}
+            {/* Botón 2 — verde oliva sólido con texto blanco */}
             <motion.a
               href="#servicios"
               whileHover={{ y: -2, transition: { duration: 0.2 } }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-badge border border-white/60 text-small font-medium text-white hover:bg-white/10 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-badge text-small font-semibold bg-brand-primary text-text-on-dark hover:bg-brand-primary-light transition-all"
             >
               Nuestros servicios
               <ArrowRight size={14} />

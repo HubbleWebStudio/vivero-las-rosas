@@ -3,16 +3,33 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
+import Image from 'next/image'
 
 const links = [
-  { label: 'Productos',   href: '#productos'  },
-  { label: 'Paisajismo',  href: '#servicios'  },
-  { label: 'Nosotros',    href: '#galeria'    },
+  { label: 'Productos',   href: '/productos'  },
+  { label: 'Paisajismo',  href: '/paisajismo'  },
+  { label: 'Nosotros',    href: '/nosotros'   },
 ]
 
-const WA_HREF = 'https://wa.me/5213315917870'
+const WA_HREF = 'https://wa.me/523316038900'
 
-/* ── SVG WhatsApp inline ── */
+/* ── SVG Icons inline ── */
+function InstagramIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+    </svg>
+  )
+}
+
+function FacebookIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.514c-1.491 0-1.956.932-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+    </svg>
+  )
+}
+
 function WhatsAppIcon({ size = 18 }: { size?: number }) {
   return (
     <svg
@@ -35,59 +52,99 @@ export default function Navbar() {
   return (
     <>
       {/* ── Navbar flotante — píldora ── */}
-      <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-2xl px-4">
-        <nav className="flex items-center justify-between gap-4 bg-white/90 backdrop-blur-md rounded-badge px-5 py-2.5 shadow-md">
+      <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-3xl px-4">
+        <nav className="grid grid-cols-3 items-center bg-white/90 backdrop-blur-md rounded-badge px-5 py-2 shadow-md">
 
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2 shrink-0">
-            <span className="font-heading font-bold text-brand-primary text-h3 leading-none">
-              Las Rosas
-            </span>
-          </a>
-
-          {/* Links — desktop */}
-          <div className="hidden md:flex items-center gap-6 text-small text-text-secondary">
+          {/* Links — izquierda */}
+          <div className="hidden md:flex items-center gap-7 text-small text-text-secondary">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                className="hover:text-brand-primary transition-colors duration-200"
+                className="hover:text-brand-primary transition-colors duration-200 whitespace-nowrap"
               >
                 {l.label}
               </a>
             ))}
           </div>
 
-          {/* CTAs — desktop */}
-          <div className="hidden md:flex items-center gap-2 shrink-0">
-            {/* Ícono WhatsApp — estilo Hubble */}
-            <a
-              href={WA_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Contáctanos por WhatsApp"
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-brand-primary text-text-on-dark hover:bg-brand-primary-light transition-colors duration-200"
-            >
-              <WhatsAppIcon size={15} />
-            </a>
-
-            {/* Botón Contacto */}
-            <a
-              href="#contacto"
-              className="inline-flex items-center px-4 py-1.5 bg-brand-primary text-text-on-dark text-small font-medium rounded-badge hover:bg-brand-primary-light transition-colors duration-200"
-            >
-              Contacto
-            </a>
+          {/* Hamburger mobile — izquierda */}
+          <div className="md:hidden">
+            {/* placeholder para que el logo siga centrado en mobile */}
           </div>
 
-          {/* Hamburger — mobile */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="md:hidden p-1 text-text-primary"
-            aria-label="Menú"
-          >
-            {open ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          {/* Logo — centro */}
+          <a href="/" className="flex items-center justify-center">
+            <Image
+              src="/imagenes/home/logo.png"
+              alt="Las Rosas Vivero & Paisajismo"
+              width={160}
+              height={70}
+              className="object-contain"
+              style={{ height: '68px', width: 'auto' }}
+              priority
+            />
+          </a>
+
+          {/* Derecha — iconos + botón (desktop) / hamburger (mobile) */}
+          <div className="flex items-center justify-end gap-2">
+            {/* Iconos + botón — solo desktop */}
+            <div className="hidden md:flex items-center gap-2">
+              {/* WhatsApp */}
+              <a
+                href={WA_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Contáctanos por WhatsApp"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-brand-primary text-text-on-dark hover:bg-brand-primary-light transition-colors duration-200"
+              >
+                <WhatsAppIcon size={15} />
+              </a>
+
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/viveroypaisajismolasrosas/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Síguenos en Instagram"
+                className="w-8 h-8 flex items-center justify-center rounded-full text-white hover:opacity-90 transition-opacity duration-200"
+                style={{
+                  background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
+                }}
+              >
+                <InstagramIcon size={14} />
+              </a>
+
+              {/* Facebook */}
+              <a
+                href="https://www.facebook.com/profile.php?id=100063724833472&mibextid=ZbWKwL"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Síguenos en Facebook"
+                className="w-8 h-8 flex items-center justify-center rounded-full text-white hover:opacity-90 transition-opacity duration-200"
+                style={{ background: '#1877F2' }}
+              >
+                <FacebookIcon size={15} />
+              </a>
+
+              {/* Botón Visítanos */}
+              <a
+                href="#ubicacion"
+                className="inline-flex items-center px-4 py-1.5 bg-brand-primary text-text-on-dark text-small font-medium rounded-badge hover:bg-brand-primary-light transition-colors duration-200"
+              >
+                Visítanos
+              </a>
+            </div>
+
+            {/* Hamburger — mobile */}
+            <button
+              onClick={() => setOpen(!open)}
+              className="md:hidden p-1 text-text-primary"
+              aria-label="Menú"
+            >
+              {open ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </nav>
 
         {/* Mobile menu */}
@@ -121,11 +178,11 @@ export default function Navbar() {
                 WhatsApp
               </a>
               <a
-                href="#contacto"
+                href="#ubicacion"
                 onClick={() => setOpen(false)}
                 className="inline-flex items-center justify-center px-4 py-2 bg-brand-primary text-text-on-dark text-small font-medium rounded-badge"
               >
-                Contacto
+                Visítanos
               </a>
             </motion.div>
           )}

@@ -6,7 +6,7 @@ import Servicio from '@/components/features/Servicio'
 import Experiencia from '@/components/features/Experiencia'
 import ArtGallery from '@/components/features/ArtGallery'
 import Ubicacion from '@/components/features/Ubicacion'
-import Contacto from '@/components/features/Contacto'
+import TeEsperamos from '@/components/features/TeEsperamos'
 
 export default function Home() {
   return (
@@ -35,8 +35,8 @@ export default function Home() {
       {/* 08 - Ubicación y Horarios */}
       <Ubicacion />
 
-      {/* 09 - Contacto */}
-      <Contacto />
+      {/* 09 - Te Esperamos */}
+      <TeEsperamos />
     </main>
   )
 }

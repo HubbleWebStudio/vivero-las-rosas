@@ -47,7 +47,7 @@ const containerVariants = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' as const } },
 }
 
 type Producto = typeof productos[0]
@@ -231,12 +231,11 @@ export default function Productos() {
             transition={{ duration: 0.5, ease: 'easeOut' }}
             className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8"
           >
-            <div className="flex items-start gap-2 text-label text-text-secondary max-w-sm leading-relaxed">
+            <div className="flex items-start gap-2 text-small text-text-primary max-w-sm leading-relaxed">
               <MapPin size={13} className="mt-0.5 shrink-0 text-brand-primary" />
               <span>
-                {/* TODO: Reemplazar con contenido real */}
-                Envíos rápido 1 planta (radio de 25 km). Dado de logística dinámica.
-                Hasta 1 planta a 3 km. Consultamos tu ingeniero asignado.
+                Envío gratis hasta 2 km. Mayor distancia a cotización según la cantidad de plantas.{' '}
+                <a href="https://wa.me/523316038900" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-brand-primary transition-colors">Contáctanos por WhatsApp</a>
               </span>
             </div>
             <motion.a

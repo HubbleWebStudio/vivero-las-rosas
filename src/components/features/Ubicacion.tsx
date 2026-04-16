@@ -31,7 +31,7 @@ export default function Ubicacion() {
         </motion.div>
 
         {/* Contenido: mapa + card */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-6 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-6 items-stretch">
 
           {/* Mapa Google Maps embed */}
           <motion.div
@@ -117,7 +117,7 @@ export default function Ubicacion() {
 
             {/* Botón WhatsApp */}
             <motion.a
-              href="https://wa.me/5213315917870"
+              href="https://wa.me/523316038900"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ y: -2, transition: { duration: 0.2 } }}

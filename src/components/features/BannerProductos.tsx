@@ -43,7 +43,7 @@ export default function BannerProductos() {
           <div className="absolute inset-0 flex flex-col md:flex-row md:items-center justify-between gap-8 p-10 md:p-14">
 
             {/* Izquierda — texto */}
-            <div className="max-w-md">
+            <div className="max-w-xl">
               <motion.p
                 initial={{ opacity: 0, y: 16 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -58,7 +58,7 @@ export default function BannerProductos() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, ease: 'easeOut', delay: 0.18 }}
                 className="font-body font-bold text-white"
-                style={{ fontSize: 'clamp(1.75rem, 3vw, 2.75rem)', lineHeight: 1.1 }}
+                style={{ fontSize: 'clamp(2.1rem, 3.8vw, 3.5rem)', lineHeight: 1.08 }}
               >
                 Catálogo general de{' '}
                 <br className="hidden sm:block" />
@@ -69,10 +69,11 @@ export default function BannerProductos() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.55, ease: 'easeOut', delay: 0.28 }}
-                className="mt-4 text-small text-white/75 leading-relaxed max-w-xs"
+                className="mt-5 text-white/80 leading-relaxed max-w-sm"
+                style={{ fontSize: '1.05rem' }}
               >
                 {/* TODO: Reemplazar con contenido real */}
-                Acceso total a nuestro inventario de más de 400 especies. Desde
+                Acceso total a nuestro inventario de más de 100 especies. Desde
                 follaje decorativo hasta ejemplares de gran tamaño, listos para
                 entrega inmediata.
               </motion.p>

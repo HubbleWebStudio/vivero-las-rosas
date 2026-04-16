@@ -52,14 +52,12 @@ export default function ArtGallery() {
           </div>
 
           <motion.a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/paisajismo"
             whileHover={{ y: -2, transition: { duration: 0.2 } }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center gap-1.5 self-start sm:self-auto px-5 py-2.5 border border-brand-primary text-brand-primary text-small font-medium rounded-badge hover:bg-brand-primary hover:text-text-on-dark transition-colors shrink-0"
           >
-            Ver Instagram
+            Servicio de paisajismo
             <ArrowUpRight size={14} />
           </motion.a>
         </motion.div>

@@ -30,7 +30,7 @@ const listVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, x: 16 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' as const } },
 }
 
 export default function Servicio() {
