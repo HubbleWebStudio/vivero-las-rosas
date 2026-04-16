@@ -54,9 +54,9 @@ export default function Navbar() {
     <>
       {/* ── Navbar flotante — píldora ── */}
       <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-3xl px-4">
-        <nav className="grid grid-cols-3 items-center bg-white/90 backdrop-blur-md rounded-badge px-5 py-2 shadow-md">
+        <nav className="flex justify-between md:grid md:grid-cols-3 items-center bg-white/90 backdrop-blur-md rounded-badge px-5 py-2 shadow-md">
 
-          {/* Links — izquierda */}
+          {/* Col 1 — Links desktop / invisible en mobile (mantiene grid desktop intacto) */}
           <div className="hidden md:flex items-center gap-7 text-small text-text-secondary">
             {links.map((l) => (
               <a
@@ -69,13 +69,8 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Hamburger mobile — izquierda */}
-          <div className="md:hidden">
-            {/* placeholder para que el logo siga centrado en mobile */}
-          </div>
-
-          {/* Logo — centro */}
-          <Link href="/" className="flex items-center justify-center">
+          {/* Col 2 — Logo: centrado en desktop, izquierda en mobile (flex) */}
+          <Link href="/" className="flex items-center md:justify-center">
             <Image
               src="/imagenes/home/logo.png"
               alt="Las Rosas Vivero & Paisajismo"
@@ -87,7 +82,7 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Derecha — iconos + botón (desktop) / hamburger (mobile) */}
+          {/* Col 3 — Derecha: iconos + botón (desktop) / iconos sociales + hamburger (mobile) */}
           <div className="flex items-center justify-end gap-2">
             {/* Iconos + botón — solo desktop */}
             <div className="hidden md:flex items-center gap-2">
@@ -134,6 +129,44 @@ export default function Navbar() {
                 className="inline-flex items-center px-4 py-1.5 bg-brand-primary text-text-on-dark text-small font-medium rounded-badge hover:bg-brand-primary-light transition-colors duration-200"
               >
                 Visítanos
+              </a>
+            </div>
+
+            {/* Iconos sociales — solo mobile, a la izquierda del hamburger */}
+            <div className="flex md:hidden items-center gap-1.5">
+              {/* WhatsApp */}
+              <a
+                href={WA_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Contáctanos por WhatsApp"
+                className="w-7 h-7 flex items-center justify-center rounded-full bg-brand-primary text-text-on-dark"
+              >
+                <WhatsAppIcon size={13} />
+              </a>
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/viveroypaisajismolasrosas/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Síguenos en Instagram"
+                className="w-7 h-7 flex items-center justify-center rounded-full text-white"
+                style={{
+                  background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
+                }}
+              >
+                <InstagramIcon size={12} />
+              </a>
+              {/* Facebook */}
+              <a
+                href="https://www.facebook.com/profile.php?id=100063724833472&mibextid=ZbWKwL"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Síguenos en Facebook"
+                className="w-7 h-7 flex items-center justify-center rounded-full text-white"
+                style={{ background: '#1877F2' }}
+              >
+                <FacebookIcon size={13} />
               </a>
             </div>
 
