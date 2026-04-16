@@ -133,16 +133,16 @@ export default function Navbar() {
             </div>
 
             {/* Iconos sociales — solo mobile, a la izquierda del hamburger */}
-            <div className="flex md:hidden items-center gap-1.5">
+            <div className="flex md:hidden items-center gap-2">
               {/* WhatsApp */}
               <a
                 href={WA_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Contáctanos por WhatsApp"
-                className="w-7 h-7 flex items-center justify-center rounded-full bg-brand-primary text-text-on-dark"
+                className="w-9 h-9 flex items-center justify-center rounded-full bg-brand-primary text-text-on-dark"
               >
-                <WhatsAppIcon size={13} />
+                <WhatsAppIcon size={16} />
               </a>
               {/* Instagram */}
               <a
@@ -150,12 +150,12 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Síguenos en Instagram"
-                className="w-7 h-7 flex items-center justify-center rounded-full text-white"
+                className="w-9 h-9 flex items-center justify-center rounded-full text-white"
                 style={{
                   background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
                 }}
               >
-                <InstagramIcon size={12} />
+                <InstagramIcon size={15} />
               </a>
               {/* Facebook */}
               <a
@@ -163,10 +163,10 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Síguenos en Facebook"
-                className="w-7 h-7 flex items-center justify-center rounded-full text-white"
+                className="w-9 h-9 flex items-center justify-center rounded-full text-white"
                 style={{ background: '#1877F2' }}
               >
-                <FacebookIcon size={13} />
+                <FacebookIcon size={16} />
               </a>
             </div>
 
@@ -201,16 +201,6 @@ export default function Navbar() {
                   {l.label}
                 </a>
               ))}
-              <a
-                href={WA_HREF}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setOpen(false)}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-brand-primary text-text-on-dark text-small font-medium rounded-badge mt-1"
-              >
-                <WhatsAppIcon size={15} />
-                WhatsApp
-              </a>
               <a
                 href="#ubicacion"
                 onClick={() => setOpen(false)}
