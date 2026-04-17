@@ -37,8 +37,8 @@ export default function Hero() {
         >
           <motion.h1
             initial={{ opacity: 0, y: 28 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
             className="font-body font-bold text-white"
             style={{ fontSize: 'clamp(2.2rem, 8vw, 3rem)', lineHeight: 1.1 }}
           >
@@ -48,8 +48,8 @@ export default function Hero() {
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.25 }}
             className="mt-4 text-white/80 leading-relaxed"
             style={{ fontSize: '0.95rem', maxWidth: '34ch' }}
           >
@@ -58,8 +58,8 @@ export default function Hero() {
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
             className="mt-6 flex flex-wrap items-center gap-3"
           >
             <motion.a
