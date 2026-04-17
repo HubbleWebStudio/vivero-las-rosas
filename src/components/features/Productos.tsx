@@ -160,10 +160,25 @@ function ProductCard({
   const [slide, setSlide] = useState(0)
   const imagenes = [producto.imagen, producto.imagen2]
   const isLast = slide === imagenes.length - 1
+  const touchStartX = useRef(0)
 
   function toggleSlide(e: React.MouseEvent) {
     e.stopPropagation()
     setSlide((prev) => (prev + 1) % imagenes.length)
+  }
+
+  function handleTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  function handleTouchEnd(e: React.TouchEvent) {
+    const diff = touchStartX.current - e.changedTouches[0].clientX
+    if (Math.abs(diff) > 40) {
+      // Swipe detectado — no abrir lightbox
+      e.stopPropagation()
+      if (diff > 0 && slide < imagenes.length - 1) setSlide(slide + 1)
+      else if (diff < 0 && slide > 0) setSlide(slide - 1)
+    }
   }
 
   return (
@@ -172,11 +187,13 @@ function ProductCard({
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
       className="group bg-bg-card rounded-card shadow-sm overflow-hidden flex flex-col"
     >
-      {/* Imagen — click abre lightbox */}
+      {/* Imagen — swipe cambia imagen, tap abre lightbox */}
       <div
         className="relative w-full cursor-pointer overflow-hidden"
         style={{ aspectRatio: '4 / 5' }}
         onClick={onExpand}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
       >
         {/* Transición entre imágenes */}
         <AnimatePresence mode="wait">
