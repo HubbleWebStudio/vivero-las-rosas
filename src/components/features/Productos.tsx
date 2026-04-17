@@ -92,7 +92,7 @@ function Lightbox({ producto, onClose }: { producto: Producto; onClose: () => vo
             className="relative shrink-0 overflow-hidden rounded-card snap-center"
             style={{ height: '100%', width: '87%' }}
           >
-            <Image src={producto.imagen} alt={`${producto.nombre} — vista general`} fill className="object-cover object-center" sizes="90vw" priority />
+            <Image src={producto.imagen} alt={`${producto.nombre} — vista general`} fill className="object-contain object-center" sizes="90vw" priority />
             <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-badge bg-black/30 backdrop-blur-sm">
               <span className="text-label text-white/80">Vista general</span>
             </div>
@@ -103,7 +103,7 @@ function Lightbox({ producto, onClose }: { producto: Producto; onClose: () => vo
             className="relative shrink-0 overflow-hidden rounded-card snap-center"
             style={{ height: '100%', width: '87%' }}
           >
-            <Image src={producto.imagen2} alt={`${producto.nombre} — detalle`} fill className="object-cover object-center" sizes="90vw" priority />
+            <Image src={producto.imagen2} alt={`${producto.nombre} — detalle`} fill className="object-contain object-center" sizes="90vw" priority />
             <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-badge bg-black/30 backdrop-blur-sm">
               <span className="text-label text-white/80">Detalle</span>
             </div>
@@ -161,8 +161,7 @@ function ProductCard({
     >
       {/* Imagen — click abre lightbox */}
       <div
-        className="relative w-full cursor-pointer overflow-hidden"
-        style={{ aspectRatio: '4 / 5' }}
+        className="relative w-full cursor-pointer overflow-hidden aspect-square md:aspect-[4/5]"
         onClick={onExpand}
       >
         {/* Transición entre imágenes */}
