@@ -194,7 +194,7 @@ function ProductCard({
       </div>
 
       {/* Info */}
-      <div className="flex flex-col flex-1 p-4 gap-2">
+      <div className="flex flex-col flex-1 p-3 md:p-4 gap-1.5 md:gap-2">
         <h3 className="font-body font-bold text-text-primary text-h3">{producto.nombre}</h3>
         <p className="text-small text-text-secondary leading-snug flex-1">{producto.descripcion}</p>
 
@@ -223,6 +223,24 @@ export default function Productos() {
     <>
       <section id="productos" className="bg-bg section-padding">
         <div className="container-hubble">
+
+          {/* Título — visible solo en mobile (desktop lo lleva el BannerProductos) */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="mb-6 md:hidden"
+          >
+            <p className="text-label text-text-secondary tracking-widest uppercase mb-2">
+              — Productos de jardinería
+            </p>
+            <h2
+              className="font-body font-bold text-text-primary"
+              style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', lineHeight: 1.1 }}
+            >
+              Nuestras plantas.
+            </h2>
+          </motion.div>
 
           {/* Barra superior */}
           <motion.div
@@ -255,7 +273,7 @@ export default function Productos() {
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4"
           >
             {productos.map((p) => (
               <ProductCard
