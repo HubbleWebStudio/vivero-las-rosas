@@ -8,39 +8,48 @@ import { useRef } from 'react'
 const categorias = [
   {
     id: '01',
-    slug: 'SOMBRA',
-    titulo: 'Sombra',
+    slug: 'EXTERIOR',
+    titulo: 'Exterior',
     descripcion:
-      'Plantas adaptadas a espacios con poca luz directa. Ideales para interiores oscuros y jardines bajo árboles.', // TODO: Reemplazar
+      'Variedades resistentes para jardines y zonas exteriores. Tolerantes al clima y de fácil mantenimiento.',
     imagen: '/imagenes/home/categorias.png',
-    href: '#sombra',
+    href: '#exterior',
   },
   {
     id: '02',
-    slug: 'SOL',
-    titulo: 'Sol',
-    descripcion:
-      'Especies que prosperan con exposición solar directa. Perfectas para jardines, terrazas y exteriores abiertos.', // TODO: Reemplazar
-    imagen: '/imagenes/home/categorias.png',
-    href: '#sol',
-  },
-  {
-    id: '03',
     slug: 'INTERIOR',
     titulo: 'Interior',
     descripcion:
-      'Plantas ornamentales para espacios interiores. Purifican el aire y aportan vida a cualquier ambiente.', // TODO: Reemplazar
+      'Plantas ornamentales para espacios interiores. Purifican el aire y aportan vida a cualquier ambiente.',
     imagen: '/imagenes/home/categorias.png',
     href: '#interior',
   },
   {
-    id: '04',
-    slug: 'EXTERIOR',
-    titulo: 'Exterior',
+    id: '03',
+    slug: 'SOL',
+    titulo: 'Sol',
     descripcion:
-      'Variedades resistentes para jardines y zonas exteriores. Tolerantes al clima y de fácil mantenimiento.', // TODO: Reemplazar
+      'Especies que prosperan con exposición solar directa. Perfectas para jardines, terrazas y exteriores abiertos.',
     imagen: '/imagenes/home/categorias.png',
-    href: '#exterior',
+    href: '#sol',
+  },
+  {
+    id: '04',
+    slug: 'SOMBRA',
+    titulo: 'Sombra',
+    descripcion:
+      'Plantas adaptadas a espacios con poca luz directa. Ideales para interiores oscuros y jardines bajo árboles.',
+    imagen: '/imagenes/home/categorias.png',
+    href: '#sombra',
+  },
+  {
+    id: '05',
+    slug: 'SEMISOMBRA',
+    titulo: 'Semisombra',
+    descripcion:
+      'Especies que se adaptan a luz indirecta o filtrada. Perfectas para espacios con sol parcial durante el día.',
+    imagen: '/imagenes/home/categorias.png',
+    href: '#semisombra',
   },
 ]
 
@@ -52,6 +61,52 @@ const containerVariants = {
 const cardVariants = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' as const } },
+}
+
+/* ── Card reutilizable ── */
+function Card({ cat, sizes, className = '' }: {
+  cat: typeof categorias[0]
+  sizes: string
+  className?: string
+}) {
+  return (
+    <motion.a
+      href={cat.href}
+      variants={cardVariants}
+      whileHover={{ y: -5, transition: { duration: 0.22 } }}
+      className={`group relative overflow-hidden rounded-card block ${className}`}
+      style={{ aspectRatio: '3 / 4' }}
+    >
+      <Image
+        src={cat.imagen}
+        alt={cat.titulo}
+        fill
+        className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+        sizes={sizes}
+      />
+      <div
+        className="absolute top-3 left-3 z-10 flex items-center px-2.5 py-1 rounded-badge text-label font-medium text-white"
+        style={{ background: 'rgba(0,0,0,0.42)', backdropFilter: 'blur(6px)' }}
+      >
+        {cat.id} / {cat.slug}
+      </div>
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(to top, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.30) 50%, rgba(0,0,0,0) 100%)',
+        }}
+      />
+      <div className="absolute bottom-0 left-0 right-0 z-10 p-5 flex flex-col gap-2">
+        <h3 className="font-body font-bold text-white text-h3">{cat.titulo}</h3>
+        <p className="text-small text-white/75 leading-snug line-clamp-3">{cat.descripcion}</p>
+        <span className="mt-2 inline-flex items-center gap-1.5 self-start px-3.5 py-1.5 rounded-badge text-label font-medium text-white bg-brand-primary hover:bg-brand-primary-light transition-colors">
+          Explorar
+          <ArrowRight size={12} />
+        </span>
+      </div>
+    </motion.a>
+  )
 }
 
 export default function CategoriasBotanicas() {
@@ -94,66 +149,33 @@ export default function CategoriasBotanicas() {
           </motion.p>
         </div>
 
-        {/* Grid de 4 cards */}
+        {/* Grid de 5 cards — Mobile: 2+2+1 / Desktop: 2+3 */}
         <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          className="flex flex-col gap-4"
         >
-          {categorias.map((cat) => (
-            <motion.a
-              key={cat.id}
-              href={cat.href}
-              variants={cardVariants}
-              whileHover={{ y: -5, transition: { duration: 0.22 } }}
-              className="group relative overflow-hidden rounded-card block"
-              style={{ aspectRatio: '3 / 4' }}
-            >
-              {/* Imagen full-cover */}
-              <Image
-                src={cat.imagen}
-                alt={cat.titulo}
-                fill
-                className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          {/* Fila 1 — Exterior + Interior (2 cols siempre) */}
+          <div className="grid grid-cols-2 gap-4">
+            {categorias.slice(0, 2).map((cat) => (
+              <Card key={cat.id} cat={cat} sizes="(max-width: 1024px) 50vw, 50vw" />
+            ))}
+          </div>
+
+          {/* Fila 2 — Mobile: Sol + Sombra | Desktop: Sol + Sombra + Semisombra */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {categorias.slice(2).map((cat, i) => (
+              <Card
+                key={cat.id}
+                cat={cat}
+                // En mobile, Semisombra (índice 2) ocupa las 2 columnas
+                className={i === 2 ? 'col-span-2 md:col-span-1' : ''}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
-
-              {/* Badge top-left */}
-              <div
-                className="absolute top-3 left-3 z-10 flex items-center px-2.5 py-1 rounded-badge text-label font-medium text-white"
-                style={{ background: 'rgba(0,0,0,0.42)', backdropFilter: 'blur(6px)' }}
-              >
-                {cat.id} / {cat.slug}
-              </div>
-
-              {/* Overlay gradiente inferior */}
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    'linear-gradient(to top, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.30) 50%, rgba(0,0,0,0) 100%)',
-                }}
-              />
-
-              {/* Contenido sobre overlay */}
-              <div className="absolute bottom-0 left-0 right-0 z-10 p-5 flex flex-col gap-2">
-                <h3 className="font-body font-bold text-white text-h3">
-                  {cat.titulo}
-                </h3>
-                <p className="text-small text-white/75 leading-snug line-clamp-3">
-                  {cat.descripcion}
-                </p>
-                <span
-                  className="mt-2 inline-flex items-center gap-1.5 self-start px-3.5 py-1.5 rounded-badge text-label font-medium text-white bg-brand-primary hover:bg-brand-primary-light transition-colors"
-                >
-                  Explorar
-                  <ArrowRight size={12} />
-                </span>
-              </div>
-            </motion.a>
-          ))}
+            ))}
+          </div>
         </motion.div>
 
       </div>
