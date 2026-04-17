@@ -29,7 +29,7 @@ export default function ArtGallery() {
   const isInView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <section id="galeria" className="bg-bg section-padding">
+    <section ref={ref} id="galeria" className="bg-bg section-padding">
       <div className="container-hubble">
 
         {/* Header */}
@@ -63,14 +63,13 @@ export default function ArtGallery() {
         </motion.div>
 
         {/* ── Grid móvil — máx 2 columnas, art gallery abstracto ── */}
-        <div ref={ref} className="md:hidden grid grid-cols-2 gap-3">
+        <div className="md:hidden grid grid-cols-2 gap-3">
           {[
-            { aspect: '2/3',  colSpan: 1, pos: '50% 25%',  scale: 'scale-110', delay: 0    },
-            { aspect: '1/1',  colSpan: 1, pos: '20% 40%',  scale: 'scale-105', delay: 0.08 },
-            { aspect: '1/1',  colSpan: 1, pos: '80% 15%',  scale: 'scale-115', delay: 0.16 },
-            { aspect: '2/3',  colSpan: 1, pos: '55% 88%',  scale: 'scale-110', delay: 0.24 },
+            { aspect: '3/4',  colSpan: 1, pos: '50% 25%',  scale: 'scale-110', delay: 0    },
+            { aspect: '3/4',  colSpan: 1, pos: '20% 40%',  scale: 'scale-105', delay: 0.08 },
+            { aspect: '3/4',  colSpan: 1, pos: '80% 15%',  scale: 'scale-115', delay: 0.16 },
+            { aspect: '3/4',  colSpan: 1, pos: '55% 88%',  scale: 'scale-110', delay: 0.24 },
             { aspect: '16/7', colSpan: 2, pos: '60% 65%',  scale: 'scale-105', delay: 0.32 },
-            { aspect: '4/3',  colSpan: 2, pos: '35% 72%',  scale: 'scale-110', delay: 0.40 },
           ].map((cell, i) => (
             <motion.div
               key={i}

@@ -42,7 +42,7 @@ export default function Experiencia() {
   const isInView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <section className="bg-bg-rest py-section">
+    <section className="bg-bg-rest pt-8 pb-24 md:pt-24">
       <div className="container-hubble">
         {/* Card contenedor — verde olivo brand */}
         <motion.div

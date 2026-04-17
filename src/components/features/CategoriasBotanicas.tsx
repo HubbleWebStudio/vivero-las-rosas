@@ -64,10 +64,11 @@ const cardVariants = {
 }
 
 /* ── Card reutilizable ── */
-function Card({ cat, sizes, className = '' }: {
+function Card({ cat, sizes, className = '', aspectRatio = '3 / 4' }: {
   cat: typeof categorias[0]
   sizes: string
   className?: string
+  aspectRatio?: string
 }) {
   return (
     <motion.a
@@ -75,7 +76,7 @@ function Card({ cat, sizes, className = '' }: {
       variants={cardVariants}
       whileHover={{ y: -5, transition: { duration: 0.22 } }}
       className={`group relative overflow-hidden rounded-card block ${className}`}
-      style={{ aspectRatio: '3 / 4' }}
+      style={{ aspectRatio }}
     >
       <Image
         src={cat.imagen}
@@ -164,17 +165,31 @@ export default function CategoriasBotanicas() {
             ))}
           </div>
 
-          {/* Fila 2 — Mobile: Sol + Sombra | Desktop: Sol + Sombra + Semisombra */}
+          {/* Fila 2 — Mobile: Sol + Sombra + Semisombra landscape | Desktop: Sol + Sombra + Semisombra portrait */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {categorias.slice(2).map((cat, i) => (
+            {/* Sol y Sombra — igual en ambos */}
+            {categorias.slice(2, 4).map((cat) => (
               <Card
                 key={cat.id}
                 cat={cat}
-                // En mobile, Semisombra (índice 2) ocupa las 2 columnas
-                className={i === 2 ? 'col-span-2 md:col-span-1' : ''}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 33vw"
               />
             ))}
+
+            {/* Semisombra móvil — ancho completo, ratio landscape */}
+            <Card
+              cat={categorias[4]}
+              className="col-span-2 md:hidden"
+              aspectRatio="2 / 1"
+              sizes="100vw"
+            />
+            {/* Semisombra desktop — 1/3 columna, ratio portrait (sin cambios) */}
+            <Card
+              cat={categorias[4]}
+              className="hidden md:block"
+              aspectRatio="3 / 4"
+              sizes="33vw"
+            />
           </div>
         </motion.div>
 
