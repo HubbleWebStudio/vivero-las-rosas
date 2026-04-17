@@ -1,7 +1,7 @@
 'use client'
 
 import { AnimatePresence, motion, useInView } from 'framer-motion'
-import { ArrowRight, ChevronLeft, ChevronRight, MapPin, Maximize2, X } from 'lucide-react'
+import { ArrowRight, MapPin, Maximize2, X } from 'lucide-react'
 import Image from 'next/image'
 import { useRef, useState } from 'react'
 
@@ -52,7 +52,7 @@ const cardVariants = {
 
 type Producto = typeof productos[0]
 
-/* ── Lightbox — dos paneles, solo imágenes ── */
+/* ── Lightbox ── */
 function Lightbox({ producto, onClose }: { producto: Producto; onClose: () => void }) {
   return (
     <motion.div
@@ -61,77 +61,90 @@ function Lightbox({ producto, onClose }: { producto: Producto; onClose: () => vo
       exit={{ opacity: 0 }}
       transition={{ duration: 0.22 }}
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8"
-      style={{ background: 'rgba(12,18,12,0.78)', backdropFilter: 'blur(14px)' }}
+      className="fixed inset-0 z-50"
+      style={{ background: 'rgba(12,18,12,0.85)', backdropFilter: 'blur(14px)' }}
     >
-      {/* Botón cerrar flotante */}
-      <button
-        onClick={onClose}
-        className="absolute top-4 right-4 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-white/15 backdrop-blur-sm text-white hover:bg-white/25 transition-colors"
-        aria-label="Cerrar"
-      >
-        <X size={16} />
-      </button>
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.93, y: 18 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 12 }}
-        transition={{ duration: 0.28, ease: [0.25, 0.46, 0.45, 0.94] }}
+      {/* ── Mobile layout: pill → carrusel → cuadro info ── */}
+      <div
+        className="md:hidden flex flex-col h-full px-4 py-5 gap-4"
         onClick={(e) => e.stopPropagation()}
-        style={{ height: '80vh' }}
-        className="w-full"
       >
-        {/* ── Mobile: scroll horizontal con peek ── */}
+        {/* 1. Pill + botón cerrar */}
+        <div className="flex items-center justify-between shrink-0">
+          <div className="px-3 py-1.5 rounded-badge bg-white/15 backdrop-blur-sm">
+            <span className="text-label font-medium text-white tracking-wide">{producto.tags}</span>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-9 h-9 flex items-center justify-center rounded-full bg-white/15 backdrop-blur-sm text-white"
+            aria-label="Cerrar"
+          >
+            <X size={16} />
+          </button>
+        </div>
+
+        {/* 2. Carrusel con peek */}
         <div
-          className="md:hidden flex gap-3 h-full overflow-x-auto snap-x snap-mandatory pl-4 pr-2"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          className="flex gap-3 overflow-x-auto snap-x snap-mandatory"
+          style={{ flex: 1, scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          {/* Imagen 1 — protagonista */}
           <div
             className="relative shrink-0 overflow-hidden rounded-card snap-center"
-            style={{ height: '100%', width: '87%' }}
+            style={{ height: '100%', width: '88%' }}
           >
             <Image src={producto.imagen} alt={`${producto.nombre} — vista general`} fill className="object-contain object-center" sizes="90vw" priority />
-            <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-badge bg-black/30 backdrop-blur-sm">
-              <span className="text-label text-white/80">Vista general</span>
-            </div>
           </div>
-
-          {/* Imagen 2 — peek desde la derecha */}
           <div
             className="relative shrink-0 overflow-hidden rounded-card snap-center"
-            style={{ height: '100%', width: '87%' }}
+            style={{ height: '100%', width: '88%' }}
           >
             <Image src={producto.imagen2} alt={`${producto.nombre} — detalle`} fill className="object-contain object-center" sizes="90vw" priority />
-            <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-badge bg-black/30 backdrop-blur-sm">
-              <span className="text-label text-white/80">Detalle</span>
-            </div>
           </div>
         </div>
 
-        {/* ── Desktop: 2 paneles lado a lado (sin cambios) ── */}
-        <div className="hidden md:flex flex-row gap-3 h-full">
-          <div
-            className="relative overflow-hidden rounded-card"
-            style={{ height: '100%', aspectRatio: '4 / 5' }}
-          >
+        {/* 3. Cuadro flotante blanco — título + descripción */}
+        <div className="shrink-0 bg-white rounded-card px-5 py-4 shadow-sm">
+          <h3 className="font-body font-bold text-text-primary" style={{ fontSize: '1.1rem' }}>
+            {producto.nombre}
+          </h3>
+          <p className="text-small text-text-secondary leading-snug mt-1.5">
+            {producto.descripcion}
+          </p>
+        </div>
+      </div>
+
+      {/* ── Desktop layout: 2 paneles lado a lado (sin cambios) ── */}
+      <div className="hidden md:flex items-center justify-center h-full p-8">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-white/15 backdrop-blur-sm text-white hover:bg-white/25 transition-colors"
+          aria-label="Cerrar"
+        >
+          <X size={16} />
+        </button>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.93, y: 18 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: 12 }}
+          transition={{ duration: 0.28, ease: [0.25, 0.46, 0.45, 0.94] }}
+          onClick={(e) => e.stopPropagation()}
+          className="flex flex-row gap-3"
+          style={{ height: '80vh' }}
+        >
+          <div className="relative overflow-hidden rounded-card" style={{ height: '100%', aspectRatio: '4 / 5' }}>
             <Image src={producto.imagen} alt={`${producto.nombre} — vista general`} fill className="object-cover object-center" sizes="40vw" priority />
             <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-badge bg-black/30 backdrop-blur-sm">
               <span className="text-label text-white/80">Vista general</span>
             </div>
           </div>
-          <div
-            className="relative overflow-hidden rounded-card"
-            style={{ height: '100%', aspectRatio: '4 / 5' }}
-          >
+          <div className="relative overflow-hidden rounded-card" style={{ height: '100%', aspectRatio: '4 / 5' }}>
             <Image src={producto.imagen2} alt={`${producto.nombre} — detalle`} fill className="object-cover object-center" sizes="40vw" priority />
             <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-badge bg-black/30 backdrop-blur-sm">
               <span className="text-label text-white/80">Detalle</span>
             </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </motion.div>
   )
 }
@@ -144,14 +157,8 @@ function ProductCard({
   producto: Producto
   onExpand: () => void
 }) {
-  const [slide, setSlide] = useState(0) // 0 = imagen principal, 1 = close-up
+  const [slide, setSlide] = useState(0)
   const imagenes = [producto.imagen, producto.imagen2]
-  const isLast = slide === imagenes.length - 1
-
-  function toggleSlide(e: React.MouseEvent) {
-    e.stopPropagation()
-    setSlide((prev) => (prev + 1) % imagenes.length)
-  }
 
   return (
     <motion.div
@@ -161,7 +168,8 @@ function ProductCard({
     >
       {/* Imagen — click abre lightbox */}
       <div
-        className="relative w-full cursor-pointer overflow-hidden aspect-square md:aspect-[4/5]"
+        className="relative w-full cursor-pointer overflow-hidden"
+        style={{ aspectRatio: '4 / 5' }}
         onClick={onExpand}
       >
         {/* Transición entre imágenes */}
@@ -179,34 +187,15 @@ function ProductCard({
               alt={producto.nombre}
               fill
               className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
             />
           </motion.div>
         </AnimatePresence>
 
-        {/* Badge tag — bottom-left */}
-        <div className="absolute bottom-3 left-3 z-10 px-2.5 py-1 rounded-badge bg-white/90 backdrop-blur-sm">
-          <span className="text-label font-medium text-brand-primary tracking-wide">
-            {producto.tags}
-          </span>
-        </div>
-
-        {/* Ícono expand — top-right, siempre visible */}
+        {/* Ícono expand — top-right */}
         <div className="absolute top-3 right-3 z-10 w-7 h-7 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm shadow-sm">
           <Maximize2 size={12} className="text-text-primary" />
         </div>
-
-        {/* Flecha carrusel — center-right, siempre visible, mismo estilo que expand */}
-        <button
-          onClick={toggleSlide}
-          aria-label={isLast ? 'Ver imagen anterior' : 'Ver siguiente imagen'}
-          className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-7 h-7 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm shadow-sm hover:bg-white transition-colors"
-        >
-          {isLast
-            ? <ChevronLeft size={13} className="text-text-primary" />
-            : <ChevronRight size={13} className="text-text-primary" />
-          }
-        </button>
 
         {/* Dots indicadores — bottom-right */}
         <div className="absolute bottom-3 right-3 z-10 flex gap-1">
@@ -220,14 +209,13 @@ function ProductCard({
         </div>
       </div>
 
-      {/* Info */}
-      <div className="flex flex-col flex-1 p-3 md:p-4 gap-1.5 md:gap-2">
+      {/* Info — título + CTA */}
+      <div className="flex flex-col p-3 md:p-4 gap-2">
         <h3 className="font-body font-bold text-text-primary text-h3">{producto.nombre}</h3>
-        <p className="text-small text-text-secondary leading-snug flex-1">{producto.descripcion}</p>
-
+        <p className="hidden md:block text-small text-text-secondary leading-snug">{producto.descripcion}</p>
         <motion.button
           whileTap={{ scale: 0.97 }}
-          className="mt-3 w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-brand-primary text-text-on-dark text-small font-medium rounded-btn hover:bg-brand-primary-light transition-colors"
+          className="mt-1 w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-brand-primary text-text-on-dark text-small font-medium rounded-btn hover:bg-brand-primary-light transition-colors"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="shrink-0" aria-hidden="true">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
