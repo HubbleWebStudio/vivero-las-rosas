@@ -83,22 +83,22 @@ function Lightbox({ producto, onClose }: { producto: Producto; onClose: () => vo
           </button>
         </div>
 
-        {/* 2. Carrusel con peek — altura fija para que pill y cuadro floten pegados */}
+        {/* 2. Carrusel con peek — contenedor mismo aspecto que imagen → rounded real */}
         <div
-          className="flex gap-3 overflow-x-auto snap-x snap-mandatory rounded-card"
-          style={{ height: '62vh', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          className="flex gap-3 overflow-x-auto snap-x snap-mandatory"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           <div
-            className="relative shrink-0 snap-center"
-            style={{ height: '100%', width: '88%' }}
+            className="relative shrink-0 overflow-hidden rounded-card snap-center"
+            style={{ width: '88%', aspectRatio: '4 / 5' }}
           >
-            <Image src={producto.imagen} alt={`${producto.nombre} — vista general`} fill className="object-contain object-center rounded-card" sizes="90vw" priority />
+            <Image src={producto.imagen} alt={`${producto.nombre} — vista general`} fill className="object-cover object-center" sizes="90vw" priority />
           </div>
           <div
-            className="relative shrink-0 snap-center"
-            style={{ height: '100%', width: '88%' }}
+            className="relative shrink-0 overflow-hidden rounded-card snap-center"
+            style={{ width: '88%', aspectRatio: '4 / 5' }}
           >
-            <Image src={producto.imagen2} alt={`${producto.nombre} — detalle`} fill className="object-contain object-center rounded-card" sizes="90vw" priority />
+            <Image src={producto.imagen2} alt={`${producto.nombre} — detalle`} fill className="object-cover object-center" sizes="90vw" priority />
           </div>
         </div>
 
