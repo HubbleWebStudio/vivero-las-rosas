@@ -1,7 +1,7 @@
 'use client'
 
 import { AnimatePresence, motion, useInView } from 'framer-motion'
-import { ArrowRight, MapPin, Maximize2, X } from 'lucide-react'
+import { ArrowRight, ChevronLeft, ChevronRight, MapPin, Maximize2, X } from 'lucide-react'
 import Image from 'next/image'
 import { useRef, useState } from 'react'
 
@@ -159,6 +159,12 @@ function ProductCard({
 }) {
   const [slide, setSlide] = useState(0)
   const imagenes = [producto.imagen, producto.imagen2]
+  const isLast = slide === imagenes.length - 1
+
+  function toggleSlide(e: React.MouseEvent) {
+    e.stopPropagation()
+    setSlide((prev) => (prev + 1) % imagenes.length)
+  }
 
   return (
     <motion.div
@@ -192,10 +198,29 @@ function ProductCard({
           </motion.div>
         </AnimatePresence>
 
+        {/* Pill tag — bottom-left, solo desktop */}
+        <div className="hidden md:flex absolute bottom-3 left-3 z-10 px-2.5 py-1 rounded-badge bg-white/90 backdrop-blur-sm">
+          <span className="text-label font-medium text-brand-primary tracking-wide">
+            {producto.tags}
+          </span>
+        </div>
+
         {/* Ícono expand — top-right */}
         <div className="absolute top-3 right-3 z-10 w-7 h-7 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm shadow-sm">
           <Maximize2 size={12} className="text-text-primary" />
         </div>
+
+        {/* Flecha carrusel — center-right, solo desktop */}
+        <button
+          onClick={toggleSlide}
+          aria-label={isLast ? 'Ver imagen anterior' : 'Ver siguiente imagen'}
+          className="hidden md:flex absolute right-3 top-1/2 -translate-y-1/2 z-10 w-7 h-7 items-center justify-center rounded-full bg-white/80 backdrop-blur-sm shadow-sm hover:bg-white transition-colors"
+        >
+          {isLast
+            ? <ChevronLeft size={13} className="text-text-primary" />
+            : <ChevronRight size={13} className="text-text-primary" />
+          }
+        </button>
 
         {/* Dots indicadores — bottom-right */}
         <div className="absolute bottom-3 right-3 z-10 flex gap-1">
