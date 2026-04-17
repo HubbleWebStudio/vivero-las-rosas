@@ -56,7 +56,7 @@ export default function Experiencia() {
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+            className="grid grid-cols-1 lg:grid-cols-4 gap-4"
           >
             {stats.map((stat) => {
               const Icon = stat.icono

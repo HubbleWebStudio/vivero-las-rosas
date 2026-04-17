@@ -47,7 +47,7 @@ export default function Servicio() {
             initial={{ opacity: 0, x: -24 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="relative"
+            className="relative order-2 lg:order-1"
           >
             {/* Imagen principal */}
             <div className="relative w-full overflow-hidden rounded-card" style={{ aspectRatio: '4 / 5' }}>
@@ -81,7 +81,7 @@ export default function Servicio() {
           </motion.div>
 
           {/* ── Columna derecha — contenido ── */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 order-1 lg:order-2">
             {/* Eyebrow */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}

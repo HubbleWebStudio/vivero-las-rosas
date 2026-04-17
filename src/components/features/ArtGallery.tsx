@@ -55,18 +55,52 @@ export default function ArtGallery() {
             href="/paisajismo"
             whileHover={{ y: -2, transition: { duration: 0.2 } }}
             whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-1.5 self-start sm:self-auto px-5 py-2.5 border border-brand-primary text-brand-primary text-small font-medium rounded-badge hover:bg-brand-primary hover:text-text-on-dark transition-colors shrink-0"
+            className="inline-flex items-center gap-1.5 self-start sm:self-auto px-5 py-2.5 bg-brand-primary text-text-on-dark text-small font-medium rounded-badge hover:bg-brand-primary-light transition-colors shrink-0"
           >
             Servicio de paisajismo
             <ArrowUpRight size={14} />
           </motion.a>
         </motion.div>
 
-        {/* Grid editorial — filas y columnas 100% explícitas */}
+        {/* ── Grid móvil — máx 2 columnas, art gallery abstracto ── */}
+        <div ref={ref} className="md:hidden grid grid-cols-2 gap-3">
+          {[
+            { aspect: '2/3',  colSpan: 1, pos: '50% 25%',  scale: 'scale-110', delay: 0    },
+            { aspect: '1/1',  colSpan: 1, pos: '20% 40%',  scale: 'scale-105', delay: 0.08 },
+            { aspect: '1/1',  colSpan: 1, pos: '80% 15%',  scale: 'scale-115', delay: 0.16 },
+            { aspect: '2/3',  colSpan: 1, pos: '55% 88%',  scale: 'scale-110', delay: 0.24 },
+            { aspect: '16/7', colSpan: 2, pos: '60% 65%',  scale: 'scale-105', delay: 0.32 },
+            { aspect: '4/3',  colSpan: 2, pos: '35% 72%',  scale: 'scale-110', delay: 0.40 },
+          ].map((cell, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 18 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, ease: 'easeOut', delay: cell.delay }}
+              className="group overflow-hidden rounded-card"
+              style={{
+                aspectRatio: cell.aspect,
+                gridColumn: cell.colSpan === 2 ? 'span 2' : 'span 1',
+              }}
+            >
+              <div className="relative w-full h-full overflow-hidden">
+                <Image
+                  src="/imagenes/home/gallery.jpg"
+                  alt={`Proyecto de paisajismo Vivero Las Rosas — vista ${i + 1}`}
+                  fill
+                  className={`object-cover transition-transform duration-700 group-hover:scale-105 ${cell.scale}`}
+                  style={{ objectPosition: cell.pos }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* ── Grid desktop — 3 columnas editorial (sin cambios) ── */}
         <div
-          ref={ref}
+          className="hidden md:grid"
           style={{
-            display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
             gridTemplateRows: 'repeat(5, 160px)',
             gap: '12px',
@@ -91,7 +125,7 @@ export default function ArtGallery() {
                   fill
                   className={`object-cover transition-transform duration-700 group-hover:scale-105 ${cell.scale}`}
                   style={{ objectPosition: cell.pos }}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  sizes="(max-width: 1024px) 50vw, 33vw"
                 />
               </div>
             </motion.div>
