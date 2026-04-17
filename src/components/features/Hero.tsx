@@ -33,14 +33,14 @@ export default function Hero() {
         />
         <div
           ref={ref}
-          className="absolute inset-0 flex flex-col justify-end container-hubble pb-14 pt-24"
+          className="absolute inset-0 flex flex-col justify-center container-hubble pt-24 pb-10"
         >
           <motion.h1
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
             className="font-body font-bold text-white"
-            style={{ fontSize: 'clamp(2.2rem, 8vw, 3rem)', lineHeight: 1.1 }}
+            style={{ fontSize: 'clamp(2.5rem, 9vw, 3.5rem)', lineHeight: 1.1 }}
           >
             Vivero Las Rosas.
             <br />
@@ -50,8 +50,8 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut', delay: 0.25 }}
-            className="mt-4 text-white/80 leading-relaxed"
-            style={{ fontSize: '0.95rem', maxWidth: '34ch' }}
+            className="mt-5 text-white/85 leading-relaxed"
+            style={{ fontSize: '1.05rem', maxWidth: '34ch' }}
           >
             Venta de plantas y servicio integral de paisajismo en
             San Pedro Tlaquepaque, Jalisco.
@@ -60,25 +60,25 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
-            className="mt-6 flex flex-wrap items-center gap-3"
+            className="mt-7 flex flex-wrap items-center gap-3"
           >
             <motion.a
               href="#categorias"
               whileHover={{ y: -2, transition: { duration: 0.2 } }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-badge text-small font-semibold bg-white text-brand-primary hover:bg-white/90 transition-all shadow-sm"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-badge text-body font-semibold bg-white text-brand-primary hover:bg-white/90 transition-all shadow-sm"
             >
               Ver catálogo
-              <ArrowRight size={13} />
+              <ArrowRight size={15} />
             </motion.a>
             <motion.a
               href="#servicios"
               whileHover={{ y: -2, transition: { duration: 0.2 } }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-badge text-small font-semibold bg-brand-primary text-text-on-dark hover:bg-brand-primary-light transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-badge text-body font-semibold bg-brand-primary text-text-on-dark hover:bg-brand-primary-light transition-all"
             >
               Paisajismo
-              <ArrowRight size={13} />
+              <ArrowRight size={15} />
             </motion.a>
           </motion.div>
         </div>
