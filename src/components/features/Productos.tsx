@@ -79,28 +79,56 @@ function Lightbox({ producto, onClose }: { producto: Producto; onClose: () => vo
         exit={{ opacity: 0, scale: 0.95, y: 12 }}
         transition={{ duration: 0.28, ease: [0.25, 0.46, 0.45, 0.94] }}
         onClick={(e) => e.stopPropagation()}
-        className="flex flex-row gap-3"
         style={{ height: '80vh' }}
+        className="w-full"
       >
-        {/* Panel izquierda */}
+        {/* ── Mobile: scroll horizontal con peek ── */}
         <div
-          className="relative overflow-hidden rounded-card"
-          style={{ height: '100%', aspectRatio: '4 / 5' }}
+          className="md:hidden flex gap-3 h-full overflow-x-auto snap-x snap-mandatory pl-4 pr-2"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          <Image src={producto.imagen} alt={`${producto.nombre} — vista general`} fill className="object-cover object-center" sizes="(max-width: 1024px) 45vw, 40vw" priority />
-          <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-badge bg-black/30 backdrop-blur-sm">
-            <span className="text-label text-white/80">Vista general</span>
+          {/* Imagen 1 — protagonista */}
+          <div
+            className="relative shrink-0 overflow-hidden rounded-card snap-center"
+            style={{ height: '100%', width: '87%' }}
+          >
+            <Image src={producto.imagen} alt={`${producto.nombre} — vista general`} fill className="object-cover object-center" sizes="90vw" priority />
+            <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-badge bg-black/30 backdrop-blur-sm">
+              <span className="text-label text-white/80">Vista general</span>
+            </div>
+          </div>
+
+          {/* Imagen 2 — peek desde la derecha */}
+          <div
+            className="relative shrink-0 overflow-hidden rounded-card snap-center"
+            style={{ height: '100%', width: '87%' }}
+          >
+            <Image src={producto.imagen2} alt={`${producto.nombre} — detalle`} fill className="object-cover object-center" sizes="90vw" priority />
+            <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-badge bg-black/30 backdrop-blur-sm">
+              <span className="text-label text-white/80">Detalle</span>
+            </div>
           </div>
         </div>
 
-        {/* Panel derecha */}
-        <div
-          className="relative overflow-hidden rounded-card"
-          style={{ height: '100%', aspectRatio: '4 / 5' }}
-        >
-          <Image src={producto.imagen2} alt={`${producto.nombre} — detalle`} fill className="object-cover object-center" sizes="(max-width: 1024px) 45vw, 40vw" priority />
-          <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-badge bg-black/30 backdrop-blur-sm">
-            <span className="text-label text-white/80">Detalle</span>
+        {/* ── Desktop: 2 paneles lado a lado (sin cambios) ── */}
+        <div className="hidden md:flex flex-row gap-3 h-full">
+          <div
+            className="relative overflow-hidden rounded-card"
+            style={{ height: '100%', aspectRatio: '4 / 5' }}
+          >
+            <Image src={producto.imagen} alt={`${producto.nombre} — vista general`} fill className="object-cover object-center" sizes="40vw" priority />
+            <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-badge bg-black/30 backdrop-blur-sm">
+              <span className="text-label text-white/80">Vista general</span>
+            </div>
+          </div>
+          <div
+            className="relative overflow-hidden rounded-card"
+            style={{ height: '100%', aspectRatio: '4 / 5' }}
+          >
+            <Image src={producto.imagen2} alt={`${producto.nombre} — detalle`} fill className="object-cover object-center" sizes="40vw" priority />
+            <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-badge bg-black/30 backdrop-blur-sm">
+              <span className="text-label text-white/80">Detalle</span>
+            </div>
           </div>
         </div>
       </motion.div>
