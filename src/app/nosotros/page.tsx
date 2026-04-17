@@ -51,9 +51,9 @@ export default function NosotrosPage() {
           15
         </div>
 
-        {/* Contenido — anclado al fondo izquierdo */}
-        <div className="absolute inset-0 flex flex-col justify-end">
-          <div className="container-hubble pb-16 md:pb-24">
+        {/* Contenido — centrado en móvil, anclado al fondo en desktop */}
+        <div className="absolute inset-0 flex flex-col justify-center md:justify-end">
+          <div className="container-hubble pt-24 pb-10 md:pt-0 md:pb-24">
             <motion.p
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}

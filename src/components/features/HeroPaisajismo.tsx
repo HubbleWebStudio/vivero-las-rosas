@@ -33,7 +33,7 @@ export default function HeroPaisajismo() {
       </div>
 
       {/* Contenido */}
-      <div className="absolute inset-0 flex flex-col justify-end container-hubble" style={{ paddingBottom: '5rem' }}>
+      <div className="absolute inset-0 flex flex-col justify-center md:justify-end container-hubble pt-24 pb-10 md:pt-0 md:pb-20">
         <motion.p
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
