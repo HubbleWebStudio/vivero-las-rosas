@@ -12,13 +12,80 @@ export default function BannerProductos() {
   return (
     <section className="bg-bg-rest pb-0 pt-0">
       <div className="container-hubble py-6">
-        {/* Banner card — imagen a tamaño natural (2880×960, ratio 3:1) */}
+
+        {/* ── MÓVIL: banner tall con fill + object-cover ── */}
+        <div
+          className="md:hidden relative overflow-hidden rounded-card"
+          style={{ height: '75vh', minHeight: '480px' }}
+        >
+          <Image
+            src="/imagenes/home/banner_productos_desk.png"
+            alt="Catálogo general de plantas y árboles — Vivero Las Rosas"
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(to top, rgba(10,25,10,0.90) 0%, rgba(10,25,10,0.55) 55%, rgba(10,25,10,0.10) 100%)',
+            }}
+          />
+          <div className="absolute inset-0 flex flex-col justify-center p-8">
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: 'easeOut', delay: 0.1 }}
+              className="text-label text-white/70 tracking-widest uppercase mb-4"
+            >
+              — Inventario completo
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.18 }}
+              className="font-body font-bold text-white"
+              style={{ fontSize: 'clamp(2.5rem, 9vw, 3.5rem)', lineHeight: 1.08 }}
+            >
+              Catálogo general de plantas y árboles.
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: 'easeOut', delay: 0.28 }}
+              className="mt-5 text-white/85 leading-relaxed"
+              style={{ fontSize: '1.05rem' }}
+            >
+              Acceso total a nuestro inventario de más de 100 especies. Desde
+              follaje decorativo hasta ejemplares de gran tamaño.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.38 }}
+              className="mt-7"
+            >
+              <motion.a
+                href="#categorias"
+                whileHover={{ y: -2, transition: { duration: 0.2 } }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-brand-primary text-body font-semibold rounded-badge hover:bg-white/90 transition-colors shadow-sm"
+              >
+                Ver catálogo completo
+                <ArrowRight size={15} />
+              </motion.a>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* ── DESKTOP: banner original sin cambios ── */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 28 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="relative overflow-hidden rounded-card"
+          className="hidden md:block relative overflow-hidden rounded-card"
         >
           {/* Imagen local con ratio natural */}
           <Image
@@ -99,6 +166,7 @@ export default function BannerProductos() {
 
           </div>
         </motion.div>
+
       </div>
     </section>
   )
