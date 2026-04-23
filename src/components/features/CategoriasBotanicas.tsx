@@ -150,45 +150,34 @@ export default function CategoriasBotanicas() {
           </motion.p>
         </div>
 
-        {/* Grid de 5 cards — Mobile: 2+2+1 / Desktop: 2+3 */}
+        {/* Grid de 5 cards — Mobile: 2 cols / Desktop: 5 cols iguales */}
         <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="flex flex-col gap-4"
+          className="grid grid-cols-2 md:grid-cols-5 gap-4"
         >
-          {/* Fila 1 — Exterior + Interior (2 cols siempre) */}
-          <div className="grid grid-cols-2 gap-4">
-            {categorias.slice(0, 2).map((cat) => (
-              <Card key={cat.id} cat={cat} sizes="(max-width: 1024px) 50vw, 50vw" />
-            ))}
-          </div>
-
-          {/* Fila 2 — Mobile: Sol + Sombra + Semisombra landscape | Desktop: Sol + Sombra + Semisombra portrait */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {/* Sol y Sombra — igual en ambos */}
-            {categorias.slice(2, 4).map((cat) => (
-              <Card
-                key={cat.id}
-                cat={cat}
-                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 33vw"
-              />
-            ))}
-
-            {/* Semisombra móvil — ancho completo, ratio landscape */}
+          {/* Móvil: las primeras 4 en 2 cols, Semisombra ocupa ancho completo */}
+          {categorias.slice(0, 4).map((cat) => (
+            <Card
+              key={cat.id}
+              cat={cat}
+              sizes="(max-width: 768px) 50vw, 20vw"
+            />
+          ))}
+          {/* Semisombra — landscape en móvil, portrait en desktop como las demás */}
+          <div className="col-span-2 md:col-span-1 md:aspect-auto">
             <Card
               cat={categorias[4]}
-              className="col-span-2 md:hidden"
+              className="md:hidden"
               aspectRatio="2 / 1"
               sizes="100vw"
             />
-            {/* Semisombra desktop — 1/3 columna, ratio portrait (sin cambios) */}
             <Card
               cat={categorias[4]}
               className="hidden md:block"
-              aspectRatio="3 / 4"
-              sizes="33vw"
+              sizes="20vw"
             />
           </div>
         </motion.div>

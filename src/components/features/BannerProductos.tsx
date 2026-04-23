@@ -33,14 +33,6 @@ export default function BannerProductos() {
             }}
           />
           <div className="absolute inset-0 flex flex-col justify-center p-8">
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: 'easeOut', delay: 0.1 }}
-              className="text-label text-white/70 tracking-widest uppercase mb-4"
-            >
-              — Inventario completo
-            </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -111,15 +103,6 @@ export default function BannerProductos() {
 
             {/* Izquierda — texto */}
             <div className="max-w-xl">
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.55, ease: 'easeOut', delay: 0.1 }}
-                className="text-label text-white/70 tracking-widest uppercase mb-4"
-              >
-                — Inventario completo
-              </motion.p>
-
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
