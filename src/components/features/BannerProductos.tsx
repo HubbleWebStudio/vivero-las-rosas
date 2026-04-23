@@ -57,8 +57,8 @@ export default function BannerProductos() {
               className="mt-5 text-white/85 leading-relaxed"
               style={{ fontSize: '1.05rem' }}
             >
-              Acceso total a nuestro inventario de más de 100 especies. Desde
-              follaje decorativo hasta ejemplares de gran tamaño.
+              Conoce más de 100 variedades de plantas entre flores, follajes y árboles
+              que darán armonía a tus espacios.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 16 }}

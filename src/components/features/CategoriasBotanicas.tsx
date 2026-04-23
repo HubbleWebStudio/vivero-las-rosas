@@ -146,7 +146,7 @@ export default function CategoriasBotanicas() {
           >
             {/* TODO: Reemplazar con contenido real */}
             Seleccione la categoría de plantas según las necesidades exactas de
-            su terreno o propiedad.
+            tu hogar y jardín.
           </motion.p>
         </div>
 

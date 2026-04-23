@@ -311,7 +311,7 @@ export default function Productos() {
             <div className="flex items-start gap-2 text-small text-text-primary max-w-sm leading-relaxed">
               <MapPin size={13} className="mt-0.5 shrink-0 text-brand-primary" />
               <span>
-                Envío gratis hasta 2 km. Mayor distancia a cotización según la cantidad de plantas.{' '}
+                Envío gratis hasta 2 km de distancia. Mayor distancia a cotización según la cantidad de plantas.{' '}
                 <a href="https://wa.me/523316038900" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-brand-primary transition-colors">Contáctanos por WhatsApp</a>
               </span>
             </div>

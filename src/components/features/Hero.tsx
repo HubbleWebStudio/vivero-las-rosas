@@ -54,7 +54,7 @@ export default function Hero() {
             style={{ fontSize: '1.05rem', maxWidth: '34ch' }}
           >
             Venta de plantas y servicio integral de paisajismo en
-            San Pedro Tlaquepaque, Jalisco.
+            la zona metropolitana de Guadalajara.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -123,9 +123,7 @@ export default function Hero() {
           >
             Vivero Las Rosas.
             <br />
-            Venta de plantas y
-            <br />
-            Servicio de paisajismo.
+            Plantas y paisajismo.
           </motion.h1>
 
           {/* Subtítulo */}
