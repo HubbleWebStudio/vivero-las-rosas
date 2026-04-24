@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import { useRef } from 'react'
+import { IMG } from '@/lib/images'
 
 export default function BannerProductos() {
   const ref = useRef(null)
@@ -19,7 +20,7 @@ export default function BannerProductos() {
           style={{ height: '75vh', minHeight: '480px' }}
         >
           <Image
-            src="/imagenes/home/banner_productos_desk.png"
+            src={IMG.home.bannerProductos}
             alt="Catálogo general de plantas y árboles — Vivero Las Rosas"
             fill
             className="object-cover object-center"
@@ -81,7 +82,7 @@ export default function BannerProductos() {
         >
           {/* Imagen local con ratio natural */}
           <Image
-            src="/imagenes/home/banner_productos_desk.png"
+            src={IMG.home.bannerProductos}
             alt="Catálogo general de plantas y árboles — Vivero Las Rosas"
             width={2880}
             height={960}

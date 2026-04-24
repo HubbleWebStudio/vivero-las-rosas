@@ -40,3 +40,8 @@ next-env.d.ts
 
 # references (no subir imágenes pesadas)
 ../references/
+
+# public/imagenes — migrado a Vercel Blob
+# Las imágenes ahora se sirven desde URLs de Vercel Blob Storage (blob-manifest.json)
+# No incluir directorio local para evitar redundancia y optimizar el repositorio
+public/imagenes/

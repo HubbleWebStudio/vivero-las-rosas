@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import { useRef } from 'react'
+import { IMG } from '@/lib/images'
 
 const items = [
   {
@@ -52,7 +53,7 @@ export default function Servicio() {
             {/* Imagen principal */}
             <div className="relative w-full overflow-hidden rounded-card" style={{ aspectRatio: '4 / 5' }}>
               <Image
-                src="/imagenes/home/paisajismo.jpg"
+                src={IMG.home.paisajismo}
                 alt="Servicio profesional de paisajismo — Vivero Las Rosas"
                 fill
                 className="object-cover object-center"

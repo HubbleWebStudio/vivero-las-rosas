@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 import { useRef } from 'react'
+import { IMG } from '@/lib/images'
 
 /*
   Layout editorial 3 cols × 5 row-units (160px/u) — posición y zoom explícitos
@@ -84,7 +85,7 @@ export default function ArtGallery() {
             >
               <div className="relative w-full h-full overflow-hidden">
                 <Image
-                  src="/imagenes/home/gallery.jpg"
+                  src={IMG.home.gallery}
                   alt={`Proyecto de paisajismo Vivero Las Rosas — vista ${i + 1}`}
                   fill
                   className={`object-cover transition-transform duration-700 group-hover:scale-105 ${cell.scale}`}
@@ -119,7 +120,7 @@ export default function ArtGallery() {
             >
               <div className="relative w-full h-full overflow-hidden">
                 <Image
-                  src="/imagenes/home/gallery.jpg"
+                  src={IMG.home.gallery}
                   alt={`Proyecto de paisajismo Vivero Las Rosas — vista ${i + 1}`}
                   fill
                   className={`object-cover transition-transform duration-700 group-hover:scale-105 ${cell.scale}`}

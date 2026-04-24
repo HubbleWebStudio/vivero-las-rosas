@@ -3,12 +3,13 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { ArrowDown } from 'lucide-react'
+import { IMG } from '@/lib/images'
 
 export default function HeroPaisajismo() {
   return (
     <section className="relative w-full overflow-hidden" style={{ height: '100vh', minHeight: '600px' }}>
       <Image
-        src="/imagenes/home/gallery.jpg"
+        src={IMG.home.gallery}
         alt="Servicio de paisajismo — Vivero Las Rosas"
         fill
         className="object-cover object-center"

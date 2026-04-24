@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useInView } from 'framer-motion'
 import { ArrowRight, ChevronLeft, ChevronRight, MapPin, Maximize2, X } from 'lucide-react'
 import Image from 'next/image'
 import { useRef, useState } from 'react'
+import { IMG } from '@/lib/images'
 
 const productos = [
   {
@@ -11,32 +12,32 @@ const productos = [
     nombre: 'Monstera Deliciosa',
     tags: 'Interior · Tropical',
     descripcion: 'Planta perenne clímax. Ideal para salas y espacios de luz indirecta.',
-    imagen: '/imagenes/home/planta_01.png',
-    imagen2: '/imagenes/home/planta_01_2.png',
+    imagen: IMG.home.planta01,
+    imagen2: IMG.home.planta01_2,
   },
   {
     id: 2,
     nombre: 'Monstera Deliciosa',
     tags: 'Interior · Tropical',
     descripcion: 'Planta perenne clímax. Ideal para salas y espacios de luz indirecta.',
-    imagen: '/imagenes/home/planta_02.png',
-    imagen2: '/imagenes/home/planta_02_2.png',
+    imagen: IMG.home.planta02,
+    imagen2: IMG.home.planta02_2,
   },
   {
     id: 3,
     nombre: 'Monstera Deliciosa',
     tags: 'Interior · Tropical',
     descripcion: 'Planta perenne clímax. Ideal para salas y espacios de luz indirecta.',
-    imagen: '/imagenes/home/planta_03.png',
-    imagen2: '/imagenes/home/planta_03_2.png',
+    imagen: IMG.home.planta03,
+    imagen2: IMG.home.planta03_2,
   },
   {
     id: 4,
     nombre: 'Monstera Deliciosa',
     tags: 'Interior · Tropical',
     descripcion: 'Planta perenne clímax. Ideal para salas y espacios de luz indirecta.',
-    imagen: '/imagenes/home/planta_04.png',
-    imagen2: '/imagenes/home/planta_04_2.png',
+    imagen: IMG.home.planta04,
+    imagen2: IMG.home.planta04_2,
   },
 ]
 

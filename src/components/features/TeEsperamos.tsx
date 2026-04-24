@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
+import { IMG } from '@/lib/images'
 
 export default function TeEsperamos() {
   return (
@@ -21,7 +22,7 @@ export default function TeEsperamos() {
             style={{ aspectRatio: '16/9' }}
           >
             <Image
-              src="/imagenes/home/gallery.jpg"
+              src={IMG.home.gallery}
               alt="Proyecto de jardín realizado por Vivero Las Rosas"
               fill
               className="object-cover"

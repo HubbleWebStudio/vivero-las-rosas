@@ -4,15 +4,16 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
 import { Maximize2, X } from 'lucide-react'
 import { useState } from 'react'
+import { IMG } from '@/lib/images'
 
 /* ── Proyectos — agregar más fotos aquí cuando el cliente las entregue ── */
 const proyectos = [
-  { id: 1, src: '/imagenes/home/gallery.jpg',     alt: 'Jardín residencial con flores de temporada',  categoria: 'Residencial',  span: 'lg:col-span-2 lg:row-span-2' },
-  { id: 2, src: '/imagenes/home/paisajismo.jpg',  alt: 'Diseño de jardín en terraza',                 categoria: 'Terraza',      span: 'lg:col-span-1 lg:row-span-1' },
-  { id: 3, src: '/imagenes/home/gallery.jpg',     alt: 'Instalación de plantas de interior',          categoria: 'Interior',     span: 'lg:col-span-1 lg:row-span-1' },
-  { id: 4, src: '/imagenes/home/paisajismo.jpg',  alt: 'Espacio verde corporativo',                   categoria: 'Corporativo',  span: 'lg:col-span-1 lg:row-span-1' },
-  { id: 5, src: '/imagenes/home/gallery.jpg',     alt: 'Jardín zen minimalista',                      categoria: 'Minimalista',  span: 'lg:col-span-1 lg:row-span-1' },
-  { id: 6, src: '/imagenes/home/paisajismo.jpg',  alt: 'Jardín vertical con helechos',                categoria: 'Vertical',     span: 'lg:col-span-1 lg:row-span-1' },
+  { id: 1, src: IMG.home.gallery,     alt: 'Jardín residencial con flores de temporada',  categoria: 'Residencial',  span: 'lg:col-span-2 lg:row-span-2' },
+  { id: 2, src: IMG.home.paisajismo,  alt: 'Diseño de jardín en terraza',                 categoria: 'Terraza',      span: 'lg:col-span-1 lg:row-span-1' },
+  { id: 3, src: IMG.home.gallery,     alt: 'Instalación de plantas de interior',          categoria: 'Interior',     span: 'lg:col-span-1 lg:row-span-1' },
+  { id: 4, src: IMG.home.paisajismo,  alt: 'Espacio verde corporativo',                   categoria: 'Corporativo',  span: 'lg:col-span-1 lg:row-span-1' },
+  { id: 5, src: IMG.home.gallery,     alt: 'Jardín zen minimalista',                      categoria: 'Minimalista',  span: 'lg:col-span-1 lg:row-span-1' },
+  { id: 6, src: IMG.home.paisajismo,  alt: 'Jardín vertical con helechos',                categoria: 'Vertical',     span: 'lg:col-span-1 lg:row-span-1' },
 ]
 
 type Proyecto = typeof proyectos[0]

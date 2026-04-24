@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 import { useRef } from 'react'
+import { IMG } from '@/lib/images'
 
 export default function HistoriaVivero() {
   const ref = useRef(null)
@@ -124,7 +125,7 @@ export default function HistoriaVivero() {
               style={{ aspectRatio: '4/5', zIndex: 1 }}
             >
               <Image
-                src="/imagenes/home/paisajismo.jpg"
+                src={IMG.home.paisajismo}
                 alt="Equipo Vivero Las Rosas trabajando en Tlaquepaque"
                 fill
                 className="object-cover object-center"

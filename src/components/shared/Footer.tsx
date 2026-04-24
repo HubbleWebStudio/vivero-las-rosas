@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { IMG } from '@/lib/images'
 
 const pages = [
   { label: 'Inicio',     href: '/' },
@@ -43,7 +44,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <div className="relative h-9 w-32">
               <Image
-                src="/imagenes/home/logo.png"
+                src={IMG.home.logo}
                 alt="Vivero Las Rosas"
                 fill
                 className="object-contain object-left"

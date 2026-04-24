@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import { useRef } from 'react'
+import { IMG } from '@/lib/images'
 
 export default function Hero() {
   const ref = useRef(null)
@@ -17,7 +18,7 @@ export default function Hero() {
         style={{ height: '100svh', minHeight: '600px' }}
       >
         <Image
-          src="/imagenes/home/portada_desk.png"
+          src={IMG.home.portadaDesk}
           alt="Vivero Las Rosas — portada"
           fill
           priority
@@ -88,7 +89,7 @@ export default function Hero() {
       <section className="relative w-full overflow-hidden hidden md:block">
       {/* Imagen a tamaño natural — width/height definen el ratio, CSS escala al 100% */}
       <Image
-        src="/imagenes/home/portada_desk.png"
+        src={IMG.home.portadaDesk}
         alt="Vivero Las Rosas — portada"
         width={2880}
         height={1440}

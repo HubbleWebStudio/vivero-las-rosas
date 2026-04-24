@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { IMG } from '@/lib/images'
 import CategoriasBotanicas from '@/components/features/CategoriasBotanicas'
 import Productos from '@/components/features/Productos'
 
@@ -12,7 +13,7 @@ export default function ProductosPage() {
       <section className="relative w-full overflow-hidden" style={{ height: 'clamp(340px, 52vh, 600px)' }}>
         {/* Imagen de fondo */}
         <Image
-          src="/imagenes/home/banner_productos_desk.png"
+          src={IMG.home.bannerProductos}
           alt="Catálogo general de plantas y árboles — Vivero Las Rosas"
           fill
           className="object-cover object-center"

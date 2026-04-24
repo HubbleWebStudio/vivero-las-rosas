@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import { useRef } from 'react'
+import { IMG } from '@/lib/images'
 
 const categorias = [
   {
@@ -12,7 +13,7 @@ const categorias = [
     titulo: 'Exterior',
     descripcion:
       'Variedades resistentes para jardines y zonas exteriores. Tolerantes al clima y de fácil mantenimiento.',
-    imagen: '/imagenes/home/categorias.png',
+    imagen: IMG.home.categorias,
     href: '#exterior',
   },
   {
@@ -21,7 +22,7 @@ const categorias = [
     titulo: 'Interior',
     descripcion:
       'Plantas ornamentales para espacios interiores. Purifican el aire y aportan vida a cualquier ambiente.',
-    imagen: '/imagenes/home/categorias.png',
+    imagen: IMG.home.categorias,
     href: '#interior',
   },
   {
@@ -30,7 +31,7 @@ const categorias = [
     titulo: 'Sol',
     descripcion:
       'Especies que prosperan con exposición solar directa. Perfectas para jardines, terrazas y exteriores abiertos.',
-    imagen: '/imagenes/home/categorias.png',
+    imagen: IMG.home.categorias,
     href: '#sol',
   },
   {
@@ -39,7 +40,7 @@ const categorias = [
     titulo: 'Sombra',
     descripcion:
       'Plantas adaptadas a espacios con poca luz directa. Ideales para interiores oscuros y jardines bajo árboles.',
-    imagen: '/imagenes/home/categorias.png',
+    imagen: IMG.home.categorias,
     href: '#sombra',
   },
   {
@@ -48,7 +49,7 @@ const categorias = [
     titulo: 'Semisombra',
     descripcion:
       'Especies que se adaptan a luz indirecta o filtrada. Perfectas para espacios con sol parcial durante el día.',
-    imagen: '/imagenes/home/categorias.png',
+    imagen: IMG.home.categorias,
     href: '#semisombra',
   },
 ]

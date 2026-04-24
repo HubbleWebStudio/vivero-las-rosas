@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { ArrowDown } from 'lucide-react'
+import { IMG } from '@/lib/images'
 import HistoriaVivero from '@/components/features/HistoriaVivero'
 import ValoresVivero from '@/components/features/ValoresVivero'
 import Experiencia from '@/components/features/Experiencia'
@@ -20,7 +21,7 @@ export default function NosotrosPage() {
       >
         {/* Imagen — sin parallax, igual al home */}
         <Image
-          src="/imagenes/home/portada_desk.png"
+          src={IMG.home.portadaDesk}
           alt="Interior del Vivero Las Rosas, Tlaquepaque"
           fill
           className="object-cover object-center"

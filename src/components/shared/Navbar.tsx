@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { IMG } from '@/lib/images'
 
 const links = [
   { label: 'Productos',   href: '/productos'  },
@@ -72,7 +73,7 @@ export default function Navbar() {
           {/* Col 2 — Logo: centrado en desktop, izquierda en mobile (flex) */}
           <Link href="/" className="flex items-center md:justify-center">
             <Image
-              src="/imagenes/home/logo.png"
+              src={IMG.home.logo}
               alt="Las Rosas Vivero & Paisajismo"
               width={160}
               height={70}
