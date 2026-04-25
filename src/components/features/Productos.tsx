@@ -3,10 +3,22 @@
 import { AnimatePresence, motion, useInView } from 'framer-motion'
 import { ArrowRight, ChevronLeft, ChevronRight, MapPin, Maximize2, X } from 'lucide-react'
 import Image from 'next/image'
-import { useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { IMG } from '@/lib/images'
 
-const productos = [
+type InfoSeccion = { titulo: string; items: string[] }
+type ProductoInfo = { intro: string; secciones: InfoSeccion[] }
+type Producto = {
+  id: number
+  nombre: string
+  tags: string
+  descripcion: string
+  imagen: string
+  imagen2: string
+  info?: ProductoInfo
+}
+
+const productos: Producto[] = [
   // ── Fila 1 · CÁLIDA (rojos, fucsia intensos + follaje plateado) ──────────
   {
     id: 1,
@@ -15,6 +27,37 @@ const productos = [
     descripcion: 'Follaje exótico con venas plateadas y espigas amarillas.',
     imagen: IMG.productos.afelandra,
     imagen2: IMG.productos.afelandra_2,
+    info: {
+      intro: 'La Afelandra es una planta tropical reconocida por sus llamativas hojas verde oscuro con venas plateadas y sus espigas de flores amarillas. Perfecta para dar un toque exótico a cualquier interior.',
+      secciones: [
+        {
+          titulo: 'Origen',
+          items: [
+            'Nativa de las selvas tropicales de Brasil y México',
+            'Pertenece a la familia Acanthaceae',
+            'Se cultiva desde el siglo XIX como planta ornamental',
+          ],
+        },
+        {
+          titulo: 'Cuidados',
+          items: [
+            'Luz brillante indirecta — evitar el sol directo',
+            'Riego moderado; mantener la tierra húmeda sin encharcar',
+            'Le favorece la humedad ambiental alta',
+            'Temperatura ideal: entre 15 °C y 25 °C',
+            'Abona cada mes durante primavera y verano',
+          ],
+        },
+        {
+          titulo: 'Importante saber',
+          items: [
+            'Florece en primavera con espigas amarillas muy vistosas',
+            'Las hojas caen si el ambiente es muy seco o hay corrientes de aire',
+            'Tóxica para mascotas y niños — colócala fuera de su alcance',
+          ],
+        },
+      ],
+    },
   },
   {
     id: 2,
@@ -283,8 +326,6 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' as const } },
 }
 
-type Producto = typeof productos[0]
-
 /* ── Lightbox ── */
 function Lightbox({ producto, onClose }: { producto: Producto; onClose: () => void }) {
   return (
@@ -297,13 +338,13 @@ function Lightbox({ producto, onClose }: { producto: Producto; onClose: () => vo
       className="fixed inset-0 z-50"
       style={{ background: 'rgba(12,18,12,0.85)', backdropFilter: 'blur(14px)' }}
     >
-      {/* ── Mobile layout: pill → carrusel → cuadro info ── */}
+      {/* ── Mobile layout ── */}
       <div
-        className="md:hidden flex flex-col h-full justify-center px-4 gap-2"
+        className={`md:hidden flex flex-col h-full px-4 gap-2 ${producto.info ? 'pt-10 pb-6 overflow-hidden' : 'justify-center'}`}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* 1. Pill + botón cerrar — pegados al borde superior del carrusel */}
-        <div className="flex items-center justify-between">
+        {/* 1. Pill + botón cerrar */}
+        <div className="flex items-center justify-between shrink-0">
           <div className="px-3 py-1.5 rounded-badge bg-white/15 backdrop-blur-sm">
             <span className="text-label font-medium text-white tracking-wide">{producto.tags}</span>
           </div>
@@ -316,10 +357,10 @@ function Lightbox({ producto, onClose }: { producto: Producto; onClose: () => vo
           </button>
         </div>
 
-        {/* 2. Carrusel con peek — contenedor mismo aspecto que imagen → rounded real */}
+        {/* 2. Carrusel */}
         <div
-          className="flex gap-3 overflow-x-auto snap-x snap-mandatory"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          className="flex gap-3 overflow-x-auto snap-x snap-mandatory shrink-0"
+          style={{ scrollbarWidth: 'none' } as React.CSSProperties}
         >
           <div
             className="relative shrink-0 overflow-hidden rounded-card snap-center"
@@ -335,18 +376,40 @@ function Lightbox({ producto, onClose }: { producto: Producto; onClose: () => vo
           </div>
         </div>
 
-        {/* 3. Cuadro flotante blanco — pegado al borde inferior del carrusel */}
-        <div className="bg-white rounded-card px-5 py-3.5 shadow-sm">
+        {/* 3. Cuadro info — se alarga y hace scroll cuando hay información detallada */}
+        <div className={`bg-white rounded-card px-5 shadow-sm ${producto.info ? 'py-5 flex-1 overflow-y-auto min-h-0' : 'py-3.5'}`}>
           <h3 className="font-body font-bold text-text-primary" style={{ fontSize: '1rem' }}>
             {producto.nombre}
           </h3>
           <p className="text-body text-text-secondary leading-relaxed mt-1">
             {producto.descripcion}
           </p>
+          {producto.info && (
+            <>
+              <p className="text-body text-text-secondary leading-relaxed mt-3">
+                {producto.info.intro}
+              </p>
+              {producto.info.secciones.map((seccion) => (
+                <div key={seccion.titulo} className="mt-4">
+                  <h4 className="font-body font-semibold text-text-primary text-sm mb-2">
+                    {seccion.titulo}
+                  </h4>
+                  <ul className="flex flex-col gap-1.5">
+                    {seccion.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-small text-text-secondary leading-relaxed">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-primary shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </>
+          )}
         </div>
       </div>
 
-      {/* ── Desktop layout: 2 paneles lado a lado (sin cambios) ── */}
+      {/* ── Desktop layout ── */}
       <div className="hidden md:flex items-center justify-center h-full p-8">
         <button
           onClick={onClose}
@@ -361,15 +424,45 @@ function Lightbox({ producto, onClose }: { producto: Producto; onClose: () => vo
           exit={{ opacity: 0, scale: 0.95, y: 12 }}
           transition={{ duration: 0.28, ease: [0.25, 0.46, 0.45, 0.94] }}
           onClick={(e) => e.stopPropagation()}
-          className="flex flex-row gap-3"
-          style={{ height: '80vh' }}
+          className="flex flex-row gap-3 items-stretch"
+          style={{ height: producto.info ? '78vh' : '80vh' }}
         >
+          {/* Panel info — solo si el producto tiene información detallada */}
+          {producto.info && (
+            <div className="w-64 shrink-0 bg-white rounded-card px-6 py-6 overflow-y-auto flex flex-col gap-5">
+              <div>
+                <h3 className="font-body font-bold text-text-primary" style={{ fontSize: '1.125rem', lineHeight: 1.25 }}>
+                  {producto.nombre}
+                </h3>
+                <p className="text-body text-text-secondary leading-relaxed mt-2">
+                  {producto.info.intro}
+                </p>
+              </div>
+              {producto.info.secciones.map((seccion) => (
+                <div key={seccion.titulo}>
+                  <h4 className="font-body font-semibold text-text-primary text-sm mb-2">
+                    {seccion.titulo}
+                  </h4>
+                  <ul className="flex flex-col gap-2">
+                    {seccion.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-small text-text-secondary leading-relaxed">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-primary shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
+          {/* Imagen 1 */}
           <div className="relative overflow-hidden rounded-card" style={{ height: '100%', aspectRatio: '4 / 5' }}>
             <Image src={producto.imagen} alt={`${producto.nombre} — vista general`} fill className="object-cover object-center" sizes="40vw" priority />
             <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-badge bg-black/30 backdrop-blur-sm">
               <span className="text-label text-white/80">Vista general</span>
             </div>
           </div>
+          {/* Imagen 2 */}
           <div className="relative overflow-hidden rounded-card" style={{ height: '100%', aspectRatio: '4 / 5' }}>
             <Image src={producto.imagen2} alt={`${producto.nombre} — detalle`} fill className="object-cover object-center" sizes="40vw" priority />
             <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-badge bg-black/30 backdrop-blur-sm">
