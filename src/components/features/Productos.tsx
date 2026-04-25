@@ -43,7 +43,7 @@ const productos = [
     id: 5,
     nombre: 'Afelandra',
     tags: 'Interior · Decorativa',
-    descripcion: 'Follaje exótico con venas plateadas. Produce espigas amarillas en temporada.',
+    descripcion: 'Follaje exótico con venas plateadas y espigas amarillas.',
     imagen: IMG.productos.afelandra,
     imagen2: IMG.productos.afelandra_2,
   },
