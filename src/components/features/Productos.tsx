@@ -264,7 +264,7 @@ function ProductCard({
       <div className="flex flex-col p-3 md:p-4 gap-2">
         {/* Título: base en móvil, h3 en desktop */}
         <h3 className="font-body font-bold text-text-primary text-base md:text-h3 leading-snug">{producto.nombre}</h3>
-        <p className="hidden md:block text-small text-text-secondary leading-snug">{producto.descripcion}</p>
+        <p className="hidden md:block text-small text-text-secondary leading-snug line-clamp-2">{producto.descripcion}</p>
         <motion.button
           whileTap={{ scale: 0.97 }}
           className="mt-1 w-full inline-flex items-center justify-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2.5 bg-brand-primary text-text-on-dark text-small font-medium rounded-btn hover:bg-brand-primary-light transition-colors whitespace-nowrap"
