@@ -7,7 +7,7 @@ import { useRef, useState } from 'react'
 import { IMG } from '@/lib/images'
 
 const productos = [
-  // ── Fila 1 · FRÍA (decorativas interior, follaje plateado/verde) ──────────
+  // ── Fila 1 · CÁLIDA (rojos, fucsia intensos + follaje plateado) ──────────
   {
     id: 1,
     nombre: 'Afelandra',
@@ -26,21 +26,21 @@ const productos = [
   },
   {
     id: 3,
-    nombre: 'Calathea',
-    tags: 'Interior · Tropical',
-    descripcion: 'Hojas pintadas con patrones únicos, ideal para sombra.',
-    imagen: IMG.productos.calathea,
-    imagen2: IMG.productos.calathea_2,
+    nombre: 'Bugambilia',
+    tags: 'Exterior · Sol',
+    descripcion: 'Espectacular enredadera de flores fucsia y morado.',
+    imagen: IMG.productos.bugambilia,
+    imagen2: IMG.productos.bugambilia_2,
   },
   {
     id: 4,
-    nombre: 'Ficus Pandurata',
-    tags: 'Interior · Tropical',
-    descripcion: 'Hojas grandes en forma de violín, tendencia en diseño.',
-    imagen: IMG.productos.ficus_pandurata,
-    imagen2: IMG.productos.ficus_pandurata_2,
+    nombre: 'Kalancho',
+    tags: 'Interior · Suculenta',
+    descripcion: 'Suculenta florida en colores vivos, muy fácil de cuidar.',
+    imagen: IMG.productos.kalancho,
+    imagen2: IMG.productos.kalancho_2,
   },
-  // ── Fila 2 · CÁLIDA (rojos, rosas, fucsia intensos) ──────────────────────
+  // ── Fila 2 · FRÍA (tropicales decorativas interior) ──────────────────────
   {
     id: 5,
     nombre: 'Alternanthera',
@@ -59,19 +59,19 @@ const productos = [
   },
   {
     id: 7,
-    nombre: 'Bugambilia',
-    tags: 'Exterior · Sol',
-    descripcion: 'Espectacular enredadera de flores fucsia y morado.',
-    imagen: IMG.productos.bugambilia,
-    imagen2: IMG.productos.bugambilia_2,
+    nombre: 'Calathea',
+    tags: 'Interior · Tropical',
+    descripcion: 'Hojas pintadas con patrones únicos, ideal para sombra.',
+    imagen: IMG.productos.calathea,
+    imagen2: IMG.productos.calathea_2,
   },
   {
     id: 8,
-    nombre: 'Kalancho',
-    tags: 'Interior · Suculenta',
-    descripcion: 'Suculenta florida en colores vivos, muy fácil de cuidar.',
-    imagen: IMG.productos.kalancho,
-    imagen2: IMG.productos.kalancho_2,
+    nombre: 'Ficus Pandurata',
+    tags: 'Interior · Tropical',
+    descripcion: 'Hojas grandes en forma de violín, tendencia en diseño.',
+    imagen: IMG.productos.ficus_pandurata,
+    imagen2: IMG.productos.ficus_pandurata_2,
   },
   // ── Fila 3 · FRÍA (aromáticas verdes, hierbas) ───────────────────────────
   {
@@ -205,7 +205,7 @@ const productos = [
     imagen: IMG.productos.violeta_africana,
     imagen2: IMG.productos.violeta_africana_2,
   },
-  // ── Fila 7 · FRÍA (palmeras, troncos, aromáticas exterior) ───────────────
+  // ── Fila 7 · FRÍA (lavanda, exterior azules y blancos) ───────────────────
   {
     id: 25,
     nombre: 'Lavanda',
@@ -216,14 +216,6 @@ const productos = [
   },
   {
     id: 26,
-    nombre: 'Palma Camedor',
-    tags: 'Interior · Tropical',
-    descripcion: 'Palma elegante que purifica el aire del hogar.',
-    imagen: IMG.productos.palma_camedor,
-    imagen2: IMG.productos.palma_camedor_2,
-  },
-  {
-    id: 27,
     nombre: 'Palo de Brasil',
     tags: 'Interior · Decorativa',
     descripcion: 'Troncos leñosos con follaje verde vibrante.',
@@ -231,16 +223,7 @@ const productos = [
     imagen2: IMG.productos.palo_de_brasil_2,
   },
   {
-    id: 28,
-    nombre: 'Romero',
-    tags: 'Aromática · Exterior',
-    descripcion: 'Arbusto aromático versátil para cocina y jardines.',
-    imagen: IMG.productos.romero,
-    imagen2: IMG.productos.romero_2,
-  },
-  // ── Fila 8 · FRÍA (azules, blancos, verde oscuro) ────────────────────────
-  {
-    id: 29,
+    id: 27,
     nombre: 'Salvia Azul',
     tags: 'Exterior · Aromática',
     descripcion: 'Flores azul violeta que atraen colibríes y abejas.',
@@ -248,12 +231,29 @@ const productos = [
     imagen2: IMG.productos.salvia_azul_2,
   },
   {
-    id: 30,
+    id: 28,
     nombre: 'Teresita',
     tags: 'Exterior · Flor',
     descripcion: 'Flores pequeñas en cojín, muy resistente al sol.',
     imagen: IMG.productos.teresita,
     imagen2: IMG.productos.teresita_2,
+  },
+  // ── Fila 8 · FRÍA (palmeras, aromáticas, verde oscuro) ───────────────────
+  {
+    id: 29,
+    nombre: 'Palma Camedor',
+    tags: 'Interior · Tropical',
+    descripcion: 'Palma elegante que purifica el aire del hogar.',
+    imagen: IMG.productos.palma_camedor,
+    imagen2: IMG.productos.palma_camedor_2,
+  },
+  {
+    id: 30,
+    nombre: 'Romero',
+    tags: 'Aromática · Exterior',
+    descripcion: 'Arbusto aromático versátil para cocina y jardines.',
+    imagen: IMG.productos.romero,
+    imagen2: IMG.productos.romero_2,
   },
   {
     id: 31,
