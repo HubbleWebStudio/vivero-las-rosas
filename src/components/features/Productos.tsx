@@ -424,12 +424,12 @@ function Lightbox({ producto, onClose }: { producto: Producto; onClose: () => vo
           exit={{ opacity: 0, scale: 0.95, y: 12 }}
           transition={{ duration: 0.28, ease: [0.25, 0.46, 0.45, 0.94] }}
           onClick={(e) => e.stopPropagation()}
-          className="flex flex-row gap-3 items-stretch"
+          className={producto.info ? 'grid grid-cols-3 gap-3' : 'flex flex-row gap-3 items-stretch'}
           style={{ height: producto.info ? '78vh' : '80vh' }}
         >
           {/* Panel info — solo si el producto tiene información detallada */}
           {producto.info && (
-            <div className="w-64 shrink-0 bg-white rounded-card px-6 py-6 overflow-y-auto flex flex-col gap-5">
+            <div className="h-full bg-white rounded-card px-6 py-6 overflow-y-auto flex flex-col gap-5">
               <div>
                 <h3 className="font-body font-bold text-text-primary" style={{ fontSize: '1.125rem', lineHeight: 1.25 }}>
                   {producto.nombre}
@@ -456,14 +456,14 @@ function Lightbox({ producto, onClose }: { producto: Producto; onClose: () => vo
             </div>
           )}
           {/* Imagen 1 */}
-          <div className="relative overflow-hidden rounded-card" style={{ height: '100%', aspectRatio: '4 / 5' }}>
+          <div className="relative overflow-hidden rounded-card" style={{ height: '100%', aspectRatio: producto.info ? undefined : '4 / 5' }}>
             <Image src={producto.imagen} alt={`${producto.nombre} — vista general`} fill className="object-cover object-center" sizes="40vw" priority />
             <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-badge bg-black/30 backdrop-blur-sm">
               <span className="text-label text-white/80">Vista general</span>
             </div>
           </div>
           {/* Imagen 2 */}
-          <div className="relative overflow-hidden rounded-card" style={{ height: '100%', aspectRatio: '4 / 5' }}>
+          <div className="relative overflow-hidden rounded-card" style={{ height: '100%', aspectRatio: producto.info ? undefined : '4 / 5' }}>
             <Image src={producto.imagen2} alt={`${producto.nombre} — detalle`} fill className="object-cover object-center" sizes="40vw" priority />
             <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-badge bg-black/30 backdrop-blur-sm">
               <span className="text-label text-white/80">Detalle</span>
