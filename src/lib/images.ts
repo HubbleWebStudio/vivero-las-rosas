@@ -34,6 +34,11 @@ export const IMG = {
     planta04_2:        'https://u8h4pffmczhmgm4b.public.blob.vercel-storage.com/imagenes/home/planta_04_2.png',
   },
 
+  productos: {
+    afelandra:    'https://u8h4pffmczhmgm4b.public.blob.vercel-storage.com/imagenes/productos/Afelandra.webp',
+    afelandra_2:  'https://u8h4pffmczhmgm4b.public.blob.vercel-storage.com/imagenes/productos/Afelandra_2.webp',
+  },
+
   // ─── Cuando subas el lote de 200, agrega las secciones aquí ───────────────
   // Ejemplo (pegar URLs del blob-manifest.json):
   //
