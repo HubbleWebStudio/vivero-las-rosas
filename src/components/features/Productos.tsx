@@ -20,21 +20,42 @@ const cardVariants = {
 
 // ─── Botón WhatsApp compartido ────────────────────────────────────────────────
 
+const WA_ICON = (size: number) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className="shrink-0" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.126 1.532 5.862L.057 23.533a.75.75 0 0 0 .92.92l5.671-1.475A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.523-5.183-1.432l-.371-.22-3.367.875.893-3.26-.242-.385A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+  </svg>
+)
+
+// pushDown=true → modal (texto completo, tamaño mayor)
+// pushDown=false → card (texto corto en móvil, tamaño compacto)
 function WhatsAppBtn({ nombre, pushDown = true }: { nombre: string; pushDown?: boolean }) {
   const mensaje = encodeURIComponent(`Hola, me interesa saber la existencia de ${nombre}`)
+  if (pushDown) {
+    return (
+      <a
+        href={`https://wa.me/523316038900?text=${mensaje}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-auto w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-brand-primary text-text-on-dark text-body font-medium rounded-btn hover:bg-brand-primary-light transition-colors"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {WA_ICON(15)}
+        Consultar existencia
+      </a>
+    )
+  }
   return (
     <a
       href={`https://wa.me/523316038900?text=${mensaje}`}
       target="_blank"
       rel="noopener noreferrer"
-      className={`${pushDown ? 'mt-auto' : 'mt-1'} w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-brand-primary text-text-on-dark text-small font-medium rounded-btn hover:bg-brand-primary-light transition-colors`}
+      className="mt-1 w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-brand-primary text-text-on-dark text-small font-medium rounded-btn hover:bg-brand-primary-light transition-colors"
       onClick={(e) => e.stopPropagation()}
     >
-      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" className="shrink-0" aria-hidden="true">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.126 1.532 5.862L.057 23.533a.75.75 0 0 0 .92.92l5.671-1.475A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.523-5.183-1.432l-.371-.22-3.367.875.893-3.26-.242-.385A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
-      </svg>
-      Consultar existencia
+      {WA_ICON(13)}
+      <span className="md:hidden">Existencia</span>
+      <span className="hidden md:inline">Consultar existencia</span>
     </a>
   )
 }
@@ -49,7 +70,7 @@ function CategoriaPills({ categorias }: { categorias: CategoriaSlug[] }) {
           key={slug}
           href={`/categorias/${slug}`}
           onClick={(e) => e.stopPropagation()}
-          className="px-2.5 py-1 rounded-badge text-label font-medium text-white bg-brand-primary hover:bg-brand-primary-light transition-colors"
+          className="px-3 py-1.5 rounded-badge text-small font-medium text-white bg-brand-primary hover:bg-brand-primary-light transition-colors"
         >
           {CATEGORIAS_META[slug].titulo}
         </a>
