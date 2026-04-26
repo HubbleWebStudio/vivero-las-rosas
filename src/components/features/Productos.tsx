@@ -50,7 +50,7 @@ function WhatsAppBtn({ nombre, pushDown = true }: { nombre: string; pushDown?: b
       href={`https://wa.me/523316038900?text=${mensaje}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="mt-1 w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-brand-primary text-text-on-dark text-small font-medium rounded-btn hover:bg-brand-primary-light transition-colors"
+      className="mt-1 w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-brand-primary text-text-on-dark text-small font-medium rounded-btn hover:bg-brand-primary-light transition-colors whitespace-nowrap"
       onClick={(e) => e.stopPropagation()}
     >
       {WA_ICON(13)}
@@ -325,7 +325,7 @@ function ProductCard({ producto, onExpand }: { producto: Producto; onExpand: () 
         <h3 className="font-body font-bold text-text-primary text-base md:text-h3 leading-snug mb-2">{producto.nombre}</h3>
         <p className="hidden md:block text-small text-text-secondary leading-snug line-clamp-2 mb-2">{producto.descripcion}</p>
         <div className="mt-auto">
-          <WhatsAppBtn nombre={producto.nombre} />
+          <WhatsAppBtn nombre={producto.nombre} pushDown={false} />
         </div>
       </div>
     </motion.div>
