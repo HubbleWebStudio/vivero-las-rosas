@@ -436,8 +436,8 @@ function Lightbox({ producto, onClose }: { producto: Producto; onClose: () => vo
           exit={{ opacity: 0, scale: 0.95, y: 12 }}
           transition={{ duration: 0.28, ease: [0.25, 0.46, 0.45, 0.94] }}
           onClick={(e) => e.stopPropagation()}
-          className={producto.info ? 'grid grid-cols-3 gap-3 rounded-card overflow-hidden w-[min(88vw,1080px)]' : 'flex flex-row gap-3 items-stretch'}
-          style={producto.info ? {} : { height: '80vh' }}
+          className={producto.info ? 'grid grid-cols-3 gap-3 rounded-card overflow-hidden' : 'flex flex-row gap-3 items-stretch'}
+          style={producto.info ? { width: 'min(95vw, 1440px)' } : { height: '80vh' }}
         >
           {/* Panel info — solo si el producto tiene información detallada */}
           {producto.info && (
