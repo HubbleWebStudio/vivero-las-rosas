@@ -96,9 +96,9 @@ function Card({ cat, sizes, className = '', aspectRatio = '3 / 4' }: {
       />
       <div className="absolute bottom-0 left-0 right-0 z-10 p-5 flex flex-col gap-3">
         <h3 className="font-body font-bold text-white text-h3">{cat.titulo}</h3>
-        <span className="inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-btn text-body font-medium text-white bg-brand-primary hover:bg-brand-primary-light transition-colors">
+        <span className="inline-flex items-center gap-2 self-start px-4 py-2 rounded-btn text-small font-medium text-white bg-brand-primary hover:bg-brand-primary-light transition-colors">
           Explorar
-          <ArrowRight size={15} />
+          <ArrowRight size={13} />
         </span>
       </div>
     </motion.a>
