@@ -20,8 +20,8 @@ export default function Home() {
       {/* 03 - Banner Catálogo */}
       <BannerProductos />
 
-      {/* 04 - Productos */}
-      <Productos />
+      {/* 04 - Productos (8 en home, con CTA al catálogo completo) */}
+      <Productos limit={8} />
 
       {/* 05 - Servicio Profesional de Paisajismo */}
       <Servicio />

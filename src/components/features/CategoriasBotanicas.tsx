@@ -4,53 +4,48 @@ import { motion, useInView } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import { useRef } from 'react'
-import { IMG } from '@/lib/images'
+import { CATEGORIAS_META } from '@/lib/productos-data'
 
 const categorias = [
   {
     id: '01',
     slug: 'EXTERIOR',
-    titulo: 'Exterior',
-    descripcion:
-      'Variedades resistentes para jardines y zonas exteriores. Tolerantes al clima y de fácil mantenimiento.',
-    imagen: IMG.home.categorias,
-    href: '#exterior',
+    titulo: CATEGORIAS_META.exterior.titulo,
+    descripcion: CATEGORIAS_META.exterior.descripcion,
+    imagen: CATEGORIAS_META.exterior.imagen,
+    href: '/categorias/exterior',
   },
   {
     id: '02',
     slug: 'INTERIOR',
-    titulo: 'Interior',
-    descripcion:
-      'Plantas ornamentales para espacios interiores. Purifican el aire y aportan vida a cualquier ambiente.',
-    imagen: IMG.home.categorias,
-    href: '#interior',
+    titulo: CATEGORIAS_META.interior.titulo,
+    descripcion: CATEGORIAS_META.interior.descripcion,
+    imagen: CATEGORIAS_META.interior.imagen,
+    href: '/categorias/interior',
   },
   {
     id: '03',
     slug: 'SOL',
-    titulo: 'Sol',
-    descripcion:
-      'Especies que prosperan con exposición solar directa. Perfectas para jardines, terrazas y exteriores abiertos.',
-    imagen: IMG.home.categorias,
-    href: '#sol',
+    titulo: CATEGORIAS_META.sol.titulo,
+    descripcion: CATEGORIAS_META.sol.descripcion,
+    imagen: CATEGORIAS_META.sol.imagen,
+    href: '/categorias/sol',
   },
   {
     id: '04',
     slug: 'SOMBRA',
-    titulo: 'Sombra',
-    descripcion:
-      'Plantas adaptadas a espacios con poca luz directa. Ideales para interiores oscuros y jardines bajo árboles.',
-    imagen: IMG.home.categorias,
-    href: '#sombra',
+    titulo: CATEGORIAS_META.sombra.titulo,
+    descripcion: CATEGORIAS_META.sombra.descripcion,
+    imagen: CATEGORIAS_META.sombra.imagen,
+    href: '/categorias/sombra',
   },
   {
     id: '05',
     slug: 'SEMISOMBRA',
-    titulo: 'Semisombra',
-    descripcion:
-      'Especies que se adaptan a luz indirecta o filtrada. Perfectas para espacios con sol parcial durante el día.',
-    imagen: IMG.home.categorias,
-    href: '#semisombra',
+    titulo: CATEGORIAS_META.semisombra.titulo,
+    descripcion: CATEGORIAS_META.semisombra.descripcion,
+    imagen: CATEGORIAS_META.semisombra.imagen,
+    href: '/categorias/semisombra',
   },
 ]
 

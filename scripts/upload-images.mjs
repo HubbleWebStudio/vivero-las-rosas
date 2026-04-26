@@ -49,7 +49,14 @@ if (existsSync(MANIFEST_PATH)) {
 // Colectar archivos recursivamente
 function colectarArchivos(dir) {
   const resultado = [];
-  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+  let entries;
+  try {
+    entries = readdirSync(dir, { withFileTypes: true });
+  } catch (err) {
+    // Saltar carpetas sin permisos (común en /tmp del sistema)
+    return resultado;
+  }
+  for (const entry of entries) {
     const fullPath = join(dir, entry.name);
     if (entry.isDirectory()) {
       resultado.push(...colectarArchivos(fullPath));
