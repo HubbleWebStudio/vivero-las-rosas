@@ -321,10 +321,12 @@ function ProductCard({ producto, onExpand }: { producto: Producto; onExpand: () 
       </div>
 
       {/* Info */}
-      <div className="flex flex-col p-3 md:p-4 gap-2">
-        <h3 className="font-body font-bold text-text-primary text-base md:text-h3 leading-snug">{producto.nombre}</h3>
-        <p className="hidden md:block text-small text-text-secondary leading-snug line-clamp-2">{producto.descripcion}</p>
-        <WhatsAppBtn nombre={producto.nombre} pushDown={false} />
+      <div className="flex flex-col p-3 md:p-4 flex-1">
+        <h3 className="font-body font-bold text-text-primary text-base md:text-h3 leading-snug mb-2">{producto.nombre}</h3>
+        <p className="hidden md:block text-small text-text-secondary leading-snug line-clamp-2 mb-2">{producto.descripcion}</p>
+        <div className="mt-auto">
+          <WhatsAppBtn nombre={producto.nombre} />
+        </div>
       </div>
     </motion.div>
   )
