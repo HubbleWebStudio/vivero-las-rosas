@@ -37,31 +37,31 @@ export const CATEGORIAS_META: Record<CategoriaSlug, {
     slug: 'exterior',
     titulo: 'Exterior',
     descripcion: 'Variedades resistentes para jardines y zonas exteriores. Tolerantes al clima y de fácil mantenimiento.',
-    imagen: IMG.productos.bugambilia,
+    imagen: IMG.categorias.exterior,
   },
   interior: {
     slug: 'interior',
     titulo: 'Interior',
     descripcion: 'Plantas ornamentales para espacios interiores. Purifican el aire y aportan vida a cualquier ambiente.',
-    imagen: IMG.productos.ficus_pandurata,
+    imagen: IMG.categorias.interior,
   },
   sol: {
     slug: 'sol',
     titulo: 'Sol',
     descripcion: 'Especies que prosperan con exposición solar directa. Perfectas para jardines, terrazas y exteriores abiertos.',
-    imagen: IMG.productos.salvia_azul,
+    imagen: IMG.categorias.sol,
   },
   sombra: {
     slug: 'sombra',
     titulo: 'Sombra',
     descripcion: 'Plantas adaptadas a espacios con poca luz directa. Ideales para interiores oscuros y jardines bajo árboles.',
-    imagen: IMG.productos.calathea,
+    imagen: IMG.categorias.sombra,
   },
   semisombra: {
     slug: 'semisombra',
     titulo: 'Semisombra',
     descripcion: 'Especies que se adaptan a luz indirecta o filtrada. Perfectas para espacios con sol parcial durante el día.',
-    imagen: IMG.productos.afelandra,
+    imagen: IMG.categorias.semisombra,
   },
 }
 

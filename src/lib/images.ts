@@ -100,6 +100,14 @@ export const IMG = {
     zamioculca_2:           'https://u8h4pffmczhmgm4b.public.blob.vercel-storage.com/imagenes/productos/Zamioculca_2.webp',
   },
 
+  categorias: {
+    exterior:   'https://u8h4pffmczhmgm4b.public.blob.vercel-storage.com/imagenes/categorias/portada-exterior.jpg',
+    interior:   'https://u8h4pffmczhmgm4b.public.blob.vercel-storage.com/imagenes/categorias/portada-interior.jpg',
+    sol:        'https://u8h4pffmczhmgm4b.public.blob.vercel-storage.com/imagenes/categorias/portada-sol.jpg',
+    sombra:     'https://u8h4pffmczhmgm4b.public.blob.vercel-storage.com/imagenes/categorias/portada-sombra.jpg',
+    semisombra: 'https://u8h4pffmczhmgm4b.public.blob.vercel-storage.com/imagenes/categorias/portada-semisombra.jpg',
+  },
+
   // ─── Cuando subas el lote de 200, agrega las secciones aquí ───────────────
   // Ejemplo (pegar URLs del blob-manifest.json):
   //
