@@ -94,12 +94,11 @@ function Card({ cat, sizes, className = '', aspectRatio = '3 / 4' }: {
             'linear-gradient(to top, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.30) 50%, rgba(0,0,0,0) 100%)',
         }}
       />
-      <div className="absolute bottom-0 left-0 right-0 z-10 p-5 flex flex-col gap-2">
+      <div className="absolute bottom-0 left-0 right-0 z-10 p-5 flex flex-col gap-3">
         <h3 className="font-body font-bold text-white text-h3">{cat.titulo}</h3>
-        <p className="text-small text-white/75 leading-snug line-clamp-3">{cat.descripcion}</p>
-        <span className="mt-2 inline-flex items-center gap-1.5 self-start px-3.5 py-1.5 rounded-badge text-label font-medium text-white bg-brand-primary hover:bg-brand-primary-light transition-colors">
+        <span className="inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-btn text-body font-medium text-white bg-brand-primary hover:bg-brand-primary-light transition-colors">
           Explorar
-          <ArrowRight size={12} />
+          <ArrowRight size={15} />
         </span>
       </div>
     </motion.a>

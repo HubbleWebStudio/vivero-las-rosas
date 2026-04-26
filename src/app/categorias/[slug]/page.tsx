@@ -62,12 +62,6 @@ export default async function CategoriaPage({
             >
               {cat.titulo}.
             </h1>
-            <p
-              className="mt-4 text-white/75 leading-relaxed"
-              style={{ fontSize: '1rem', maxWidth: '40ch' }}
-            >
-              {cat.descripcion}
-            </p>
           </div>
         </div>
       </section>
