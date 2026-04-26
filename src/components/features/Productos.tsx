@@ -30,7 +30,7 @@ const WA_ICON = (size: number) => (
 // pushDown=true → modal (texto completo, tamaño mayor)
 // pushDown=false → card (texto corto en móvil, tamaño compacto)
 function WhatsAppBtn({ nombre, pushDown = true }: { nombre: string; pushDown?: boolean }) {
-  const mensaje = encodeURIComponent(`Hola, me interesa saber la existencia de ${nombre}`)
+  const mensaje = encodeURIComponent(`Hola, me interesa saber si tienen en existencia la planta ${nombre}`)
   if (pushDown) {
     return (
       <a
