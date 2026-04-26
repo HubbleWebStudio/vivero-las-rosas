@@ -63,6 +63,24 @@
   }
 }
 
+@layer utilities {
+  /* Scrollbar visible delgado — usado en el panel de info móvil del lightbox */
+  .scrollbar-visible {
+    scrollbar-width: thin;
+    scrollbar-color: #9AAF92 transparent;
+  }
+  .scrollbar-visible::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-visible::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-visible::-webkit-scrollbar-thumb {
+    background-color: #9AAF92;
+    border-radius: 9999px;
+  }
+}
+
 @layer components {
   /* Container estándar Hubble */
   .container-hubble {

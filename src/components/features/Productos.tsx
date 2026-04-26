@@ -122,7 +122,7 @@ function Lightbox({ producto, onClose }: { producto: Producto; onClose: () => vo
         </div>
 
         {/* Cuadro info */}
-        <div className={`bg-white rounded-card px-5 shadow-sm ${producto.info ? 'py-5 flex-1 overflow-y-auto min-h-0' : 'py-3.5'}`}>
+        <div className={`bg-white rounded-card px-5 shadow-sm ${producto.info ? 'py-5 flex-1 overflow-y-auto min-h-0 scrollbar-visible' : 'py-3.5'}`}>
           <h3 className="font-body font-bold text-text-primary" style={{ fontSize: '1rem' }}>
             {producto.nombre}
           </h3>
