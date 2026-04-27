@@ -43,7 +43,7 @@ export default function Hero() {
             className="font-body font-bold text-white"
             style={{ fontSize: 'clamp(2.5rem, 9vw, 3.5rem)', lineHeight: 1.1 }}
           >
-            prueba.
+            Vivero Las Rosas.
             <br />
             Plantas y paisajismo.
           </motion.h1>
@@ -122,7 +122,7 @@ export default function Hero() {
             className="font-body font-bold text-white"
             style={{ fontSize: 'clamp(2.5rem, 4.5vw, 4rem)', lineHeight: 1.1 }}
           >
-            prueba.
+            Vivero Las Rosas.
             <br />
             Plantas y paisajismo.
           </motion.h1>
