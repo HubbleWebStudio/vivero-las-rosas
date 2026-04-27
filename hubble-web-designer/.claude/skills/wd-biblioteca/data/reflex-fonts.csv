@@ -1,0 +1,27 @@
+Family,Category,Reason,Source
+Fraunces,Serif,Overused reflex pick for "warm" briefs — saturated AI training data,impeccable v2.1.7
+Newsreader,Serif,Reflex "editorial" default — monoculture font,impeccable v2.1.7
+Lora,Serif,Reflex "elegant" default — monoculture font,impeccable v2.1.7
+Crimson,Serif,Reflex "elegant" default — monoculture font,impeccable v2.1.7
+Crimson Pro,Serif,Reflex "elegant" default — monoculture font,impeccable v2.1.7
+Crimson Text,Serif,Reflex "elegant" default — monoculture font,impeccable v2.1.7
+Playfair Display,Serif,Heavily overused in AI output for "luxury/editorial" — immediate AI tell,impeccable v2.1.7
+Cormorant,Serif,Reflex "refined" default — monoculture font,impeccable v2.1.7
+Cormorant Garamond,Serif,Reflex "refined" default — monoculture font,impeccable v2.1.7
+Syne,Display,Reflex "modern/bold" default — monoculture font,impeccable v2.1.7
+IBM Plex Mono,Monospace,Reflex "technical" pick — lazy shorthand for developer vibe,impeccable v2.1.7
+IBM Plex Sans,Sans,Reflex "technical" default — monoculture font,impeccable v2.1.7
+IBM Plex Serif,Serif,Reflex "technical" default — monoculture font,impeccable v2.1.7
+Space Mono,Monospace,Reflex "technical" pick — lazy developer shorthand,impeccable v2.1.7
+Space Grotesk,Sans,Heavily overused AI training default — top 3 AI tell,impeccable v2.1.7
+Inter,Sans,THE generic AI font — used by default by most models,impeccable v2.1.7
+DM Sans,Sans,Reflex "modern" default — monoculture font,impeccable v2.1.7
+DM Serif Display,Serif,Reflex display default — monoculture font,impeccable v2.1.7
+DM Serif Text,Serif,Reflex display default — monoculture font,impeccable v2.1.7
+Outfit,Sans,Reflex "modern/clean" default — monoculture font,impeccable v2.1.7
+Plus Jakarta Sans,Sans,Reflex "modern/startup" default — monoculture font,impeccable v2.1.7
+Instrument Sans,Sans,Reflex "editorial modern" default — monoculture font,impeccable v2.1.7
+Instrument Serif,Serif,Reflex "editorial modern" default — monoculture font,impeccable v2.1.7
+Roboto,Sans,Generic system-default — AI slop tell,Google/Anthropic frontend-design
+Arial,Sans,Generic system-default — AI slop tell,Google/Anthropic frontend-design
+Open Sans,Sans,Generic system-default — AI slop tell,Google/Anthropic frontend-design

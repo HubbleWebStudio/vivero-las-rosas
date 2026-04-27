@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Colores ─────────────────────────────────────────── */
+  --color-brand-primary:       #6A7C62;   /* Verde olivo: botones CTA, íconos activos */
+  --color-brand-primary-light: #7D9175;   /* Olivo claro para hovers / acentos */
+  --color-brand-secondary:     #9AAF92;   /* Olivo suave / secundario */
+
+  --color-bg:         #FAFAF8;   /* Fondo base off-white cálido */
+  --color-bg-card:    #FFFFFF;   /* Fondo de cards / elementos elevados */
+  --color-bg-rest:    #E8EAE6;   /* Descanso visual — gris-sage visible entre secciones */
+  --color-bg-dark:    #3A4635;   /* Fondo oscuro olivo para secciones CTA / footer */
+  --color-bg-feature: #ECF2E9;   /* Fondo verde suave para secciones destacadas */
+  --color-bg-olive:   #556650;   /* Verde olivo medio para sección Experiencia */
+
+  --color-text-primary:   #1A1A1A;   /* Texto principal */
+  --color-text-secondary: #6B6B6B;   /* Subtítulos / texto secundario */
+  --color-text-on-dark:   #F5F5F0;   /* Texto sobre fondos oscuros */
+
+  --color-border: #E5E5E0;   /* Bordes sutiles */
+
+  /* ── Tipografía ──────────────────────────────────────── */
+  --font-heading: var(--font-heading-var), serif;
+  --font-body:    var(--font-body-var), sans-serif;
+
+  /* ── Escala tipográfica ──────────────────────────────── */
+  --text-display:    3.5rem;   --text-display--line-height:    1.1;
+  --text-h1:         2.5rem;   --text-h1--line-height:         1.2;
+  --text-h2:         1.75rem;  --text-h2--line-height:         1.3;
+  --text-h3:         1.25rem;  --text-h3--line-height:         1.4;
+  --text-body-lg:    1.125rem; --text-body-lg--line-height:    1.6;
+  --text-body:       1rem;     --text-body--line-height:       1.6;
+  --text-small:      0.875rem; --text-small--line-height:      1.5;
+  --text-label:      0.75rem;  --text-label--line-height:      1.4;
+
+  /* ── Border radius ───────────────────────────────────── */
+  --radius-card:  1rem;
+  --radius-btn:   0.5rem;
+  --radius-badge: 9999px;
+
+  /* ── Espaciado ───────────────────────────────────────── */
+  --spacing-section:      6rem;
+  --spacing-section-sm:   4rem;
+  --spacing-container-px: 1.5rem;
+
+  /* ── Ancho máximo ────────────────────────────────────── */
+  --width-container: 80rem;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  /* Scrollbar visible delgado — usado en el panel de info móvil del lightbox */
+  .scrollbar-visible {
+    scrollbar-width: thin;
+    scrollbar-color: #9AAF92 transparent;
+  }
+  .scrollbar-visible::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-visible::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-visible::-webkit-scrollbar-thumb {
+    background-color: #9AAF92;
+    border-radius: 9999px;
+  }
+}
+
+@layer components {
+  /* Container estándar Hubble */
+  .container-hubble {
+    max-width: var(--width-container);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-container-px);
+    padding-right: var(--spacing-container-px);
+  }
+
+  /* Padding de sección estándar */
+  .section-padding {
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+  }
+}

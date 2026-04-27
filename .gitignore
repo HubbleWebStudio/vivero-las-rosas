@@ -1,0 +1,20 @@
+# Credenciales y secretos
+.env
+.env.*
+gdrive-credentials.json
+
+# Dependencias
+node_modules/
+
+# Build
+dist/
+.next/
+out/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
